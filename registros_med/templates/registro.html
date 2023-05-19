@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block section %}
+
+<h1>Información Pacientes</h1>
+
+<table role="grid">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+      <th>Sexo</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <th>Fecha</th>
+      <th>Concepto</th>
+      <th>valor</th>  
+      <th>Acciones</th>
+    </tr>      
+  </thead>
+  <tbody>
+    {% for item in data %}
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.lastname}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.sex}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.concept}}</td>
+        <td>{{item.quantity}}US</td>
+        <td>
+          <a href="/update/{{item.id}}">
+            <span class="material-symbols-outlined">
+                edit
+            </span>
+          </a>
+          <a href="/delete/{{item.id}}">
+            <span class="material-symbols-outlined">
+                delete
+            </span>
+          </a>
+
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

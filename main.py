@@ -1,0 +1,1 @@
+from registros_med import app

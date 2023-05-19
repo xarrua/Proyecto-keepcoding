@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <!--Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <!--Custom CSS-->
+  {% block customCSS %}
+  {% endblock %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="/statics/css/home.css">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    
+  <style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+    
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+    
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+    
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+    
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+    
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+    
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+    
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+    
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+    
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+    
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+    
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    /* stylelint-disable selector-list-comma-newline-after */
+    
+    .blog-header {
+    border-bottom: 1px solid #e5e5e5;
+    }
+    
+    .blog-header-logo {
+    font-family: Amiri, Georgia, "Times New Roman", serif;
+    font-size: 2.25rem;
+    }
+    
+    .blog-header-logo:hover {
+    text-decoration: none;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+    font-family: Amiri, Georgia, "Times New Roman", serif;
+    }
+    
+    .display-4 {
+    font-size: 2.5rem;
+    }
+    @media (min-width: 768px) {
+    .display-4 {
+    font-size: 3rem;
+    }
+    }
+    
+    .flex-auto {
+    flex: 0 0 auto;
+    }
+    
+    .h-250 { height: 250px; }
+    @media (min-width: 768px) {
+    .h-md-250 { height: 250px; }
+    }
+    
+    /* Pagination */
+    .blog-pagination {
+    margin-bottom: 4rem;
+    }
+    
+    /*
+    * Blog posts
+    */
+    .blog-post {
+    margin-bottom: 4rem;
+    }
+    .blog-post-title {
+    font-size: 2.5rem;
+    }
+    .blog-post-meta {
+    margin-bottom: 1.25rem;
+    color: #727272;
+    }
+    
+    /*
+    * Footer
+    */
+    .blog-footer {
+    padding: 2.5rem 0;
+    color: #727272;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+    }
+    .blog-footer p:last-child {
+    margin-bottom: 0;
+    }
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+    
+    body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+    }
+    
+    
+    /* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+    
+    /* Carousel base class */
+    .carousel {
+    margin-bottom: 4rem;
+    }
+    /* Since positioning the image, we need to help out the caption */
+    .carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+    }
+    
+    /* Declare heights because of positioning of img element */
+    .carousel-item {
+    height: 32rem;
+    }
+    
+    
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+    
+    /* Center align the text within the three columns below the carousel */
+    .marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    }
+    .marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+    }
+    
+    
+    /* Featurettes
+    ------------------------- */
+    
+    .featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+    }
+    
+    /* Thin out the marketing headings */
+    
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+    
+    @media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    }
+    
+    .featurette-heading {
+    font-size: 50px;
+    }
+    }
+    
+    @media (min-width: 62em) {
+    .featurette-heading {
+    margin-top: 7rem;
+    }
+    }
+    </style>  
+</head>
+
+<body>
+  
+  <div class="container">
+    <header class="blog-header lh-1 py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+          <a class="link-secondary" href="/registros_med/templates/login.html">About</a>
+        </div>
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-dark" href="index.html">Home</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <a class="link-secondary" href="#" aria-label="بحث">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>josu</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+          </a>
+          <a class="btn btn-sm btn-outline-secondary" href="login.html">Login</a>
+        </div>
+      </div>
+    </header>
+    <section>
+      {# esto es un comentario en jinja #}
+      {% block section %}
+  
+      {% endblock %}
+  
+    </section>
+  
+    <footer class="blog-footer">
+      <p>&copy; 2024 XaRrUaـ <a href="https://getbootstrap.com/">Bootstrap</a> referencias <a href="https://twitter.com/mdo"><bdi lang="en" dir="ltr">@mdo</bdi></a>.</p>
+      <p>
+        <a href="#">otros</a>
+      </p>
+    </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+</body>
+</html>
