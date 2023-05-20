@@ -4,6 +4,85 @@
 <form action="/update/{{idform}}" method="POST">
     {{dataForm.csrf_token}}
 
+    {{dataForm.name.label}}
+    {{dataForm.name}}
+    {% if dataForm.name.errors %}
+        <ul class="errors">
+        {% for error in dataForm.name.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}{{dataForm.date.label}}
+
+    {{dataForm.lastname}}
+    {% if dataForm.lastname.errors %}
+        <ul class="errors">
+        {% for error in dataForm.lastname.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.email.label}}
+    {{dataForm.email}}
+    {% if dataForm.email.errors %}
+        <ul class="errors">
+        {% for error in dataForm.email.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.phone.label}}
+    {{dataForm.phone}}
+    {% if dataForm.phone.errors %}
+        <ul class="errors">
+        {% for error in dataForm.phone.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.country.label}}
+    {{dataForm.country}}
+    {% if dataForm.country.errors %}
+        <ul class="errors">
+        {% for error in dataForm.country.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.city.label}}
+    {{dataForm.city}}
+    {% if dataForm.city.errors %}
+        <ul class="errors">
+        {% for error in dataForm.city.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.age.label}}
+    {{dataForm.age}}
+    {% if dataForm.age.errors %}
+        <ul class="errors">
+        {% for error in dataForm.age.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.sex.label}}
+    {{dataForm.sex}}
+    {% if dataForm.sex.errors %}
+        <ul class="errors">
+        {% for error in dataForm.sex.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
     {{dataForm.date.label}}
     {{dataForm.date}}
     {% if dataForm.date.errors %}
@@ -25,7 +104,7 @@
     {% endif %}
 
     {{dataForm.quantity.label}}
-    {{dataForm.quantity(autocomplete="off", step="0.01" )}}
+    {{dataForm.quantity}}
     {% if dataForm.quantity.errors %}
         <ul class="errors">
         {% for error in dataForm.quantity.errors %}

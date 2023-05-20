@@ -1,0 +1,24 @@
+CREATE TABLE "info" (
+	"id"	INTEGER,
+	"name"	TEXT NOT NULL,
+	"lastname"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL UNIQUE,
+	"phone"	NUMERIC NOT NULL UNIQUE,
+	"country"	TEXT NOT NULL,
+	"city"	TEXT NOT NULL,
+	"age"	TEXT NOT NULL,
+	"sex"	TEXT NOT NULL,
+	"date"	TEXT NOT NULL,
+	"concept"	TEXT NOT NULL,
+	"quantity"	REAL NOT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)
+
+
+CREATE TABLE "users" (
+	"id"	INTEGER,
+	"user"	TEXT NOT NULL,
+	"pass"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)

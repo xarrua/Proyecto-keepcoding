@@ -1,5 +1,5 @@
 from registros_med import app
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import date, datetime
 from registros_med.models import *
 from registros_med.forms import MovementsForm
@@ -7,6 +7,20 @@ from registros_med.forms import MovementsForm
 def validateForm(datosFormulario):
     errores=[]#crear lista para guardar errores
     hoy = date.today().isoformat()#capturo la fecha de hoy
+    if datosFormulario['name'] =="":
+        errores.append("El nombre no puede ir vacio")
+    if datosFormulario['lastname'] =="":
+        errores.append("El apellido no puede ir vacio")
+    if datosFormulario['email'] =="":
+        errores.append("El email no puede ir vacio")
+    if datosFormulario['phone'] =="":
+        errores.append("El telefono no puede ir vacio")
+    if datosFormulario['country'] =="":
+        errores.append("El Pais no puede ir vacio")
+    if datosFormulario['city'] =="":
+        errores.append("El concepto no puede ir vacio")
+    if datosFormulario['age'] > hoy:
+        errores.append("La fecha no es correcta")
     if datosFormulario['date'] > hoy:
         errores.append("La fecha no puede ser mayor a la actual")
     if datosFormulario['concept'] =="":
@@ -17,14 +31,13 @@ def validateForm(datosFormulario):
     return errores
 
 @app.route('/')
-def index():
-    
-    return render_template("index.html")
+def index():    
+    return render_template("index.html", title=home)
 
 
 @app.route("/login")
 def login():
-    return render_template('login.html')
+    return render_template('login.html', title=login)
 
 @app.route('/home')
 def home():
@@ -35,10 +48,21 @@ def about():
     return render_template("about.html", title="about")
 
 @app.route('/registro')
-def info():
+def registro():
     registros = select_all()
-
     return render_template("registro.html", data = registros,ingreso=select_ingreso(),egreso= select_egreso())
+
+@app.route('/java')
+def java():
+    return render_template('personal/java.html', title=java)
+
+@app.route('/swe')
+def swe():
+    return render_template('personal/swe.html', title=swe)
+
+@app.route('/josu')
+def josu():
+    return render_template('personal/josu.html', title=josu)
 
 
 @app.route("/new",methods=["GET","POST"])
@@ -51,12 +75,20 @@ def create():
     else:
        
         if form.validate_on_submit():
-            insert([form.date.data.isoformat(),
+            insert([form.name.data,
+                    form.lastname.data,
+                    form.email.data,
+                    form.phone.data,
+                    form.country.data,
+                    form.city.data,
+                    form.age.data.isoformat(),
+                    form.sex.data,
+                    form.date.data.isoformat(),
                     form.concept.data,
                     form.quantity.data ])
             
             flash("Movimiento registrado correactamente!!!")
-            return redirect('/')  
+            return redirect('/registro')  
         else:
             return render_template("create.html",dataForm=form)
 
@@ -78,20 +110,36 @@ def update(id):
     if request.method == "GET":
         resultado = select_by(id)
         
-        form.date.data = datetime.strptime(resultado[1],"%Y-%m-%d")
-        form.concept.data = resultado[2]
-        form.quantity.data = resultado[3]
+        form.name.data = resultado[1]
+        form.lastname.data = resultado[2]
+        form.email.data = resultado[3]
+        form.phone.data = resultado[4]
+        form.country.data = resultado[5]
+        form.city.data = resultado[6]
+        form.age.data = datetime.strptime(resultado[7],"%Y-%m-%d")
+        form.sex.data = resultado[8]
+        form.date.data = datetime.strptime(resultado[9],"%Y-%m-%d")
+        form.concept.data = resultado[10]
+        form.quantity.data = resultado[11]
 
         return render_template("update.html",dataForm = form, idform = id)
     else:
        
        if form.validate_on_submit():
              #aqui ingresa el post
-            update_by(id,[form.date.data.isoformat(),
-                            form.concept.data,
-                            form.quantity.data])
+            update_by(id,[form.name.data,
+                    form.lastname.data,
+                    form.email.data,
+                    form.phone.data,
+                    form.country.data,
+                    form.city.data,
+                    form.age.data.isoformat(),
+                    form.sex.data,
+                    form.date.data.isoformat(),
+                    form.concept.data,
+                    form.quantity.data ])
             flash("Movimiento actualizado correactamente!!!")
-            return redirect("/")
+            return redirect("/registro")
        else:
             return render_template("create.html",dataForm=form)
       
