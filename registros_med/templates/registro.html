@@ -2,7 +2,23 @@
 
 {% block section %}
 
-<h1>Información Pacientes</h1>
+
+  <div class="container">
+      <nav>
+          <ul>
+            <li><strong>App Web</strong></li>
+          </ul>
+          <ul>
+              <li><a href="/" role="button">Inicio</a></li>
+            <li><a href="/new" role="button">Nuevo</a></li>
+          </ul>
+      </nav>
+  </div>
+
+
+  
+ 
+<h1>Información Usuarios</h1>
 
 <table role="grid">
   <thead>
@@ -13,9 +29,11 @@
       <th>Telefono</th>
       <th>Pais</th>
       <th>ciudad</th>
-      <th>Edad</th>
+      <th>Cumpleaños</th>
       <th>Sexo</th>    
       <th>Fecha</th>
+      <th>Usuario</th>    
+      <th>Contraseña</th>
       <th>Concepto</th>
       <th>valor</th>  
       <th>Acciones</th>
@@ -24,24 +42,26 @@
   <tbody>
     {% for item in data %}
       <tr>
-        <td>{{item.name}}</td>
-        <td>{{item.lastname}}</td>
-        <td>{{item.email}}</td>
-        <td>{{item.phone}}</td>
-        <td>{{item.country}}</td>
-        <td>{{item.city}}</td>
-        <td>{{item.age}}</td>
-        <td>{{item.sex}}</td>        
-        <td>{{item.date}}</td>
-        <td>{{item.concept}}</td>
-        <td>{{item.quantity}}US</td>
+        <td>{{item.usu_name}}</td>
+        <td>{{item.usu_lastname}}</td>
+        <td>{{item.usu_email}}</td>
+        <td>{{item.usu_phone}}</td>
+        <td>{{item.usu_country}}</td>
+        <td>{{item.usu_city}}</td>
+        <td>{{item.usu_birthd}}</td>
+        <td>{{item.usu_sex}}</td> 
+        <td>{{item.usu_date}}</td>
+        <td>{{item.usu_user}}</td>
+        <td>{{item.usu_pass}}</td>       
+        <td>{{item.usu_concept}}</td>
+        <td>{{item.usu_quantity}}US</td>
         <td>
-          <a href="/update/{{item.id}}">
+          <a href="/update/{{item.usu_id}}">
             <span class="material-symbols-outlined">
                 edit
             </span>
           </a>
-          <a href="/delete/{{item.id}}">
+          <a href="/delete/{{item.usu_id}}">
             <span class="material-symbols-outlined">
                 delete
             </span>
@@ -52,5 +72,6 @@
     {% endfor %}
   </tbody>
 </table>
+
 
 {% endblock %}

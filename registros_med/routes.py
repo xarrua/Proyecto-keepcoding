@@ -2,30 +2,32 @@ from registros_med import app
 from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import date, datetime
 from registros_med.models import *
-from registros_med.forms import MovementsForm
+from registros_med.forms import RegistrosForm
 
 def validateForm(datosFormulario):
     errores=[]#crear lista para guardar errores
     hoy = date.today().isoformat()#capturo la fecha de hoy
-    if datosFormulario['name'] =="":
+    if datosFormulario['usu_name'] =="":
         errores.append("El nombre no puede ir vacio")
-    if datosFormulario['lastname'] =="":
+    if datosFormulario['usu_lastname'] =="":
         errores.append("El apellido no puede ir vacio")
-    if datosFormulario['email'] =="":
+    if datosFormulario['usu_email'] =="":
         errores.append("El email no puede ir vacio")
-    if datosFormulario['phone'] =="":
+    if datosFormulario['usu_phone'] =="":
         errores.append("El telefono no puede ir vacio")
-    if datosFormulario['country'] =="":
+    if datosFormulario['usu_country'] =="":
         errores.append("El Pais no puede ir vacio")
-    if datosFormulario['city'] =="":
+    if datosFormulario['usu_city'] =="":
         errores.append("El concepto no puede ir vacio")
-    if datosFormulario['age'] > hoy:
+    if datosFormulario['usu_birthd'] > hoy:
         errores.append("La fecha no es correcta")
-    if datosFormulario['date'] > hoy:
+    if datosFormulario['usu_sex'] =="":
+        errores.append("El concepto no puede ir vacio")    
+    if datosFormulario['usu_date'] > hoy:
         errores.append("La fecha no puede ser mayor a la actual")
-    if datosFormulario['concept'] =="":
+    if datosFormulario['usu_concept'] =="":
         errores.append("El concepto no puede ir vacio")
-    if  datosFormulario['quantity'] == "" or float(datosFormulario['quantity']) == 0.0:
+    if  datosFormulario['usu_quantity'] == "" or float(datosFormulario['usu_quantity']) == 0.0:
         errores.append("El monto debe ser distinto de 0 y de vacio")
     
     return errores
@@ -35,13 +37,15 @@ def index():
     return render_template("index.html", title=home)
 
 
-@app.route("/login")
+
+@app.route("/login", methods=['GET', 'POST'])
 def login():
+  
     return render_template('login.html', title=login)
 
 @app.route('/home')
 def home():
-    return render_template("home.html")
+    return render_template("home.html", title="home2")
 
 @app.route("/about")
 def about():
@@ -68,24 +72,26 @@ def josu():
 @app.route("/new",methods=["GET","POST"])
 def create():
 
-    form = MovementsForm()
+    form = RegistrosForm()
 
     if request.method == "GET":
         return render_template("create.html",dataForm=form)
     else:
        
         if form.validate_on_submit():
-            insert([form.name.data,
-                    form.lastname.data,
-                    form.email.data,
-                    form.phone.data,
-                    form.country.data,
-                    form.city.data,
-                    form.age.data.isoformat(),
-                    form.sex.data,
-                    form.date.data.isoformat(),
-                    form.concept.data,
-                    form.quantity.data ])
+            insert([form.usu_name.data,
+                    form.usu_lastname.data,
+                    form.usu_email.data,
+                    form.usu_phone.data,
+                    form.usu_country.data,
+                    form.usu_city.data,
+                    form.usu_birthd.data.isoformat(),
+                    form.usu_sex.data,
+                    form.usu_user.data,
+                    form.usu_pass.data,
+                    form.usu_date.data.isoformat(),
+                    form.usu_concept.data,
+                    form.usu_quantity.data ])
             
             flash("Movimiento registrado correactamente!!!")
             return redirect('/registro')  
@@ -101,43 +107,47 @@ def remove(id):
     else:
         delete_by(id)
         flash("Movimiento eliminado correctamente !!!")
-        return redirect("/")
+        return redirect("/registro")
     
 @app.route("/update/<int:id>",methods=["GET","POST"])
 def update(id):
-    form = MovementsForm()
+    form = RegistrosForm()
 
     if request.method == "GET":
         resultado = select_by(id)
         
-        form.name.data = resultado[1]
-        form.lastname.data = resultado[2]
-        form.email.data = resultado[3]
-        form.phone.data = resultado[4]
-        form.country.data = resultado[5]
-        form.city.data = resultado[6]
-        form.age.data = datetime.strptime(resultado[7],"%Y-%m-%d")
-        form.sex.data = resultado[8]
-        form.date.data = datetime.strptime(resultado[9],"%Y-%m-%d")
-        form.concept.data = resultado[10]
-        form.quantity.data = resultado[11]
+        form.usu_name.data = resultado[1]
+        form.usu_lastname.data = resultado[2]
+        form.usu_email.data = resultado[3]
+        form.usu_phone.data = resultado[4]
+        form.usu_country.data = resultado[5]
+        form.usu_city.data = resultado[6]
+        form.usu_birthd.data = datetime.strptime(resultado[7],"%Y-%m-%d")
+        form.usu_sex.data = resultado[8]
+        form.usu_user.data = resultado[9]
+        form.usu_pass.data = resultado[10]
+        form.usu_date.data = datetime.strptime(resultado[11],"%Y-%m-%d")
+        form.usu_concept.data = resultado[12]
+        form.usu_quantity.data = resultado[13]
 
         return render_template("update.html",dataForm = form, idform = id)
     else:
        
        if form.validate_on_submit():
              #aqui ingresa el post
-            update_by(id,[form.name.data,
-                    form.lastname.data,
-                    form.email.data,
-                    form.phone.data,
-                    form.country.data,
-                    form.city.data,
-                    form.age.data.isoformat(),
-                    form.sex.data,
-                    form.date.data.isoformat(),
-                    form.concept.data,
-                    form.quantity.data ])
+            update_by(id,[form.usu_name.data,
+                    form.usu_lastname.data,
+                    form.usu_email.data,
+                    form.usu_phone.data,
+                    form.usu_country.data,
+                    form.usu_city.data,
+                    form.usu_birthd.data.isoformat(),
+                    form.usu_sex.data,
+                    form.usu_user.data,
+                    form.usu_pass.data,                    
+                    form.usu_date.data.isoformat(),
+                    form.usu_concept.data,
+                    form.usu_quantity.data ])
             flash("Movimiento actualizado correactamente!!!")
             return redirect("/registro")
        else:

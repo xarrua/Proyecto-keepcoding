@@ -1,113 +1,148 @@
 {% extends "base.html" %}
 {% block section %}
 
+<div class="container">
+    <nav>
+        <ul>
+          <li><strong>App Web</strong></li>
+        </ul>
+        <ul>
+            <li><a href="/" role="button">Inicio</a></li>
+          <li><a href="/new" role="button">Nuevo</a></li>
+        </ul>
+    </nav>
+</div>
+
 <form action="/new" method="POST">
     {{dataForm.csrf_token}}
 
-    {{dataForm.name.label}}
-    {{dataForm.name}}
-    {% if dataForm.name.errors %}
+    {{dataForm.usu_name.label}}
+    {{dataForm.usu_name}}
+    {% if dataForm.usu_name.errors %}
         <ul class="errors">
-        {% for error in dataForm.name.errors %}
+        {% for error in dataForm.usu_name.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
-    {% endif %}{{dataForm.date.label}}
+    {% endif %}{{dataForm.usu_date.label}}
 
-    {{dataForm.lastname}}
-    {% if dataForm.lastname.errors %}
+    {{dataForm.usu_lastname.label}}
+    {{dataForm.usu_lastname}}
+    {% if dataForm.usu_lastname.errors %}
         <ul class="errors">
-        {% for error in dataForm.lastname.errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-
-    {{dataForm.email.label}}
-    {{dataForm.email}}
-    {% if dataForm.email.errors %}
-        <ul class="errors">
-        {% for error in dataForm.email.errors %}
+        {% for error in dataForm.usu_lastname.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    {{dataForm.phone.label}}
-    {{dataForm.phone}}
-    {% if dataForm.phone.errors %}
+
+    {{dataForm.usu_email.label}}
+    {{dataForm.usu_email}}
+    {% if dataForm.usu_email.errors %}
         <ul class="errors">
-        {% for error in dataForm.phone.errors %}
+        {% for error in dataForm.usu_email.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    {{dataForm.country.label}}
-    {{dataForm.country}}
-    {% if dataForm.country.errors %}
+    {{dataForm.usu_phone.label}}
+    {{dataForm.usu_phone}}
+    {% if dataForm.usu_phone.errors %}
         <ul class="errors">
-        {% for error in dataForm.country.errors %}
+        {% for error in dataForm.usu_phone.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    {{dataForm.city.label}}
-    {{dataForm.city}}
-    {% if dataForm.city.errors %}
+    {{dataForm.usu_country.label}}
+    {{dataForm.usu_country}}
+    {% if dataForm.usu_country.errors %}
         <ul class="errors">
-        {% for error in dataForm.city.errors %}
+        {% for error in dataForm.usu_country.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    {{dataForm.age.label}}
-    {{dataForm.age}}
-    {% if dataForm.age.errors %}
+    {{dataForm.usu_city.label}}
+    {{dataForm.usu_city}}
+    {% if dataForm.usu_city.errors %}
         <ul class="errors">
-        {% for error in dataForm.age.errors %}
+        {% for error in dataForm.usu_city.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    {{dataForm.sex.label}}
-    {{dataForm.sex}}
-    {% if dataForm.sex.errors %}
+    {{dataForm.usu_birthd.label}}
+    {{dataForm.usu_birthd}}
+    {% if dataForm.usu_birthd.errors %}
         <ul class="errors">
-        {% for error in dataForm.sex.errors %}
+        {% for error in dataForm.usu_birthd.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    {{dataForm.date.label}}
-    {{dataForm.date}}
-    {% if dataForm.date.errors %}
+    {{dataForm.usu_sex.label}}
+    {{dataForm.usu_sex}}
+    {% if dataForm.usu_sex.errors %}
         <ul class="errors">
-        {% for error in dataForm.date.errors %}
+        {% for error in dataForm.usu_sex.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    {{dataForm.concept.label}}
-    {{dataForm.concept}}
-    {% if dataForm.concept.errors %}
+    {{dataForm.usu_date.label}}
+    {{dataForm.usu_date}}
+    {% if dataForm.usu_date.errors %}
         <ul class="errors">
-        {% for error in dataForm.concept.errors %}
+        {% for error in dataForm.usu_date.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    {{dataForm.quantity.label}}
-    {{dataForm.quantity}}
-    {% if dataForm.quantity.errors %}
+    {{dataForm.usu_user.label}}
+    {{dataForm.usu_user}}
+    {% if dataForm.usu_user.errors %}
         <ul class="errors">
-        {% for error in dataForm.quantity.errors %}
+        {% for error in dataForm.usu_user.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.usu_pass.label}}
+    {{dataForm.usu_pass}}
+    {% if dataForm.usu_pass.errors %}
+        <ul class="errors">
+        {% for error in dataForm.usu_pass.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    {{dataForm.usu_concept.label}}
+    {{dataForm.usu_concept}}
+    {% if dataForm.usu_concept.errors %}
+        <ul class="errors">
+        {% for error in dataForm.usu_concept.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{dataForm.usu_quantity.label}}
+    {{dataForm.usu_quantity}}
+    {% if dataForm.usu_quantity.errors %}
+        <ul class="errors">
+        {% for error in dataForm.usu_quantity.errors %}
             <li>{{ error }}</li>
         {% endfor %}
         </ul>

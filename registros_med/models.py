@@ -1,7 +1,7 @@
 from registros_med.conexion import Conexion
 
 def select_all():
-    conectar = Conexion("SELECT * from info order by date DESC")
+    conectar = Conexion("SELECT * from usuariospeck order by usu_date DESC")
     filas = conectar.res.fetchall() #(1,2023-05-05,sueldo,1600)
     columnas= conectar.res.description #columnas(id,0,0,0,0,0,0)
                                                           
@@ -21,37 +21,37 @@ def select_all():
     return lista_diccionario
 
 def insert(registroForm):
-    conectarInsert = Conexion("insert into info(date,concept,quantity) values(?,?,?)",registroForm)
+    conectarInsert = Conexion("insert into usuariospeck(usu_name,usu_lastname,usu_email,usu_phone,usu_country,usu_city,usu_birthd,usu_sex,usu_date,usu_user,usu_pass,usu_concept,usu_quantity) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",registroForm)
     conectarInsert.con.commit()#funcion para validar el registro
     conectarInsert.con.close()
 
 
 def select_by(id):
-    conectSelectBy = Conexion(f"select * from info where id={id}")
+    conectSelectBy = Conexion(f"select * from usuariospeck where usu_id={id}")
     resultado = conectSelectBy.res.fetchall()
     conectSelectBy.con.close()
 
     return resultado[0]
 
 def delete_by(id):
-    conectDeleteBy = Conexion(f"delete from info where id={id};")
+    conectDeleteBy = Conexion(f"delete from usuariospeck where usu_id={id};")
     conectDeleteBy.con.commit()#funcion para validar el registro
     conectDeleteBy.con.close()
 
 def update_by(id,registro):
-    conectUpdateBy = Conexion(f"UPDATE info SET date=? ,concept=?, quantity=? WHERE id={id};",registro)
+    conectUpdateBy = Conexion(f"UPDATE usuariospeck SET usu_name=?,usu_lastname=?,usu_email=?,usu_phone=?,usu_country=?,usu_city=?,usu_birthd=?,usu_sex=?,usu_user=?,usu_pass=?,usu_date=?,usu_concept=?,usu_quantity=? WHERE usu_id={id};",registro)
     conectUpdateBy.con.commit()
     conectUpdateBy.con.close()
 
 def select_ingreso():
-    conectIngreso = Conexion("SELECT sum(quantity) from info WHERE quantity > 0")
+    conectIngreso = Conexion("SELECT sum(usu_quantity) from usuariospeck WHERE usu_quantity > 0")
     resultadoIngreso = conectIngreso.res.fetchall()
     conectIngreso.con.close()
 
     return resultadoIngreso[0][0]
 
 def select_egreso():
-    conectEgreso = Conexion("SELECT sum(quantity) from info WHERE quantity < 0")
+    conectEgreso = Conexion("SELECT sum(usu_quantity) from usuariospeck WHERE usu_quantity < 0")
     resultadoEgreso = conectEgreso.res.fetchall()
     conectEgreso.con.close()
 

@@ -1,24 +1,17 @@
-CREATE TABLE "info" (
-	"id"	INTEGER,
-	"name"	TEXT NOT NULL,
-	"lastname"	TEXT NOT NULL,
-	"email"	TEXT NOT NULL UNIQUE,
-	"phone"	NUMERIC NOT NULL UNIQUE,
-	"country"	TEXT NOT NULL,
-	"city"	TEXT NOT NULL,
-	"age"	TEXT NOT NULL,
-	"sex"	TEXT NOT NULL,
-	"date"	TEXT NOT NULL,
-	"concept"	TEXT NOT NULL,
-	"quantity"	REAL NOT NULL,
-	PRIMARY KEY("id" AUTOINCREMENT)
-)
-
-
-CREATE TABLE "users" (
-	"id"	INTEGER,
-	"user"	TEXT NOT NULL,
-	"pass"	TEXT NOT NULL,
-	"email"	TEXT NOT NULL,
-	PRIMARY KEY("id" AUTOINCREMENT)
+CREATE TABLE "usuariospeck" (
+	"usu_id"	INTEGER,
+	"usu_name"	TEXT NOT NULL,
+	"usu_lastname"	NUMERIC NOT NULL,
+	"usu_email"	TEXT NOT NULL UNIQUE,
+	"usu_phone"	TEXT NOT NULL UNIQUE,
+	"usu_country"	TEXT,
+	"usu_city"	TEXT,
+	"usu_birthd"	TEXT NOT NULL,
+	"usu_sex"	TEXT NOT NULL,
+	"usu_date"	TEXT NOT NULL,
+	"usu_user"	TEXT NOT NULL UNIQUE,
+	"usu_pass"	TEXT NOT NULL,
+	"usu_concept"	INTEGER,
+	"usu_quantity"	INTEGER NOT NULL,
+	PRIMARY KEY("usu_id" AUTOINCREMENT)
 )
