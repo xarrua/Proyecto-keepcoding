@@ -3,25 +3,21 @@
 {% block section %}
 
 
-  <div class="container">
-      <nav>
-          <ul>
-            <li><strong>App Web</strong></li>
-          </ul>
-          <ul>
-              <li><a href="/" role="button">Inicio</a></li>
-            <li><a href="/new" role="button">Nuevo</a></li>
-          </ul>
-      </nav>
-  </div>
+<div class="container">
+    
+  <h2><strong>App Web</strong></h2>
+      
+</div>
 
+<h1>Información Usuarios<a href="{{ url_for('create') }}"><span class="material-symbols-outlined">
+    person_add
+    </span>
+    
+    </span>
+</a></h1>
 
-  
- 
-<h1>Información Usuarios</h1>
-
-<table role="grid">
-  <thead>
+<table class="table table-sm">
+  <thead class="table-dark">
     <tr>
       <th>Nombre</th>
       <th>Apellido</th>
@@ -37,6 +33,7 @@
       <th>Concepto</th>
       <th>valor</th>  
       <th>Acciones</th>
+      
     </tr>      
   </thead>
   <tbody>
@@ -50,9 +47,9 @@
         <td>{{item.usu_city}}</td>
         <td>{{item.usu_birthd}}</td>
         <td>{{item.usu_sex}}</td> 
-        <td>{{item.usu_date}}</td>
+        <td>{{item.usu_date}}</td>  
         <td>{{item.usu_user}}</td>
-        <td>{{item.usu_pass}}</td>       
+        <td>{{item.usu_pass}}</td>        
         <td>{{item.usu_concept}}</td>
         <td>{{item.usu_quantity}}US</td>
         <td>
@@ -68,10 +65,11 @@
           </a>
 
         </td>
+       
       </tr>
     {% endfor %}
   </tbody>
 </table>
-
+ 
 
 {% endblock %}

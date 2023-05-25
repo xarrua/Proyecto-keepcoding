@@ -1,3 +1,5 @@
 /entorno
 **/__pycache__/
+/data/registros.sqlite/
+
 

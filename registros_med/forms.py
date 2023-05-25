@@ -11,7 +11,7 @@ class RegistrosForm(FlaskForm):
     usu_country=  StringField('Pais',validators=[DataRequired( message="El pais es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
     usu_city=  StringField('Ciudad',validators=[DataRequired( message="El ciudad es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
     usu_birthd=  DateField('Fecha de nacimiento',validators=[DataRequired( message="La fecha de nacimiento es requerida" )])
-    usu_sex=  StringField('sexo',validators=[DataRequired( message="El apellido es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
+    usu_sex= StringField('sexo',validators=[DataRequired( message="El sexo es requerido" )])
     usu_date = DateField('Fecha',validators=[DataRequired( message="La fecha es requerida" )])
     usu_user = StringField('Usuario',validators=[DataRequired( message="El usuario es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
     usu_pass = StringField('Contraseña',validators=[DataRequired( message="La contraseña es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
@@ -25,4 +25,4 @@ class RegistrosForm(FlaskForm):
         if field.data > date.today():
             raise ValidationError("Fecha invalida: La fecha introducida es a futuro")
         
-        
+   

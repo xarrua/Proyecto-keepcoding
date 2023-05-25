@@ -1,0 +1,49 @@
+{% extends "personal/pbase.html" %}
+{% block section %}
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    
+    <div class="col-lg-4">
+      <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/swe.jpg')}}" width="140" height="140"> 
+
+      <h2 class="fw-normal">Swelyn Valverde</h2>
+      <p>Psicóloga clínica especialista en Infanto-juvenil.</p>
+    
+    </div><!-- /.col-lg-4 -->
+   
+
+
+
+ <!-- /END THE FEATURETTES -->
+
+    </div><!-- /.container -->
+    <div class="card text-center mb-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Cconsulta</h5>
+        <p class="card-text">45 min de sesión.</p>
+        <a href="{{ url_for('payment') }}" class="btn btn-primary">Agendar</a>
+      </div>
+    </div>
+    <div class="card text-center mb-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Tests</h5>
+        <p class="card-text">Test de evaluación</p>
+        <a href="{{ url_for('payment') }}" class="btn btn-primary">agregar</a>
+      </div>
+    </div>
+    <div class="card text-center mb-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Telemedicina</h5>
+        <img src="#" alt="Imagen 2">
+        <p class="card-text">Difernetes medios, incluye receta, licencias y certificados digitales.</p>
+        <a href="{{ url_for('payment') }}" class="btn btn-primary">ir</a>
+      </div>
+    </div>
+
+
+
+
+{% endblock %}

@@ -18,11 +18,11 @@ def validateForm(datosFormulario):
     if datosFormulario['usu_country'] =="":
         errores.append("El Pais no puede ir vacio")
     if datosFormulario['usu_city'] =="":
-        errores.append("El concepto no puede ir vacio")
+        errores.append("La ciudad no puede ir vacio")
     if datosFormulario['usu_birthd'] > hoy:
         errores.append("La fecha no es correcta")
     if datosFormulario['usu_sex'] =="":
-        errores.append("El concepto no puede ir vacio")    
+        errores.append("El genero no puede ir vacio")    
     if datosFormulario['usu_date'] > hoy:
         errores.append("La fecha no puede ser mayor a la actual")
     if datosFormulario['usu_concept'] =="":
@@ -36,16 +36,33 @@ def validateForm(datosFormulario):
 def index():    
     return render_template("index.html", title=home)
 
+@app.route('/sswe')
+def sswe():
+    return render_template("personal/sswe.html")
+
+@app.route('/pswe')
+def pswe():
+    return render_template("personal/pswe.html", name="Swelyn")
+
+@app.route('/sjava')
+def sjava():
+    return render_template("personal/sjava.html", name="Josué")
+
+@app.route('/pjava')
+def pjava():
+    return render_template("personal/pjava.html", name="Josué")
+
+
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
   
-    return render_template('login.html', title=login)
+    return render_template("login.html", title="login")
 
-@app.route('/home')
+@app.route('/profesionals')
 def home():
-    return render_template("home.html", title="home2")
+    return render_template("profesionals.html", title="profesionals")
 
 @app.route("/about")
 def about():
@@ -68,6 +85,13 @@ def swe():
 def josu():
     return render_template('personal/josu.html', title=josu)
 
+@app.route('/payment')
+def payment():
+    return render_template('payment/form.html', title="checkout")
+
+@app.route('/psico')
+def psico():
+    return render_template('psico.html', title=psico)
 
 @app.route("/new",methods=["GET","POST"])
 def create():
@@ -87,9 +111,9 @@ def create():
                     form.usu_city.data,
                     form.usu_birthd.data.isoformat(),
                     form.usu_sex.data,
-                    form.usu_user.data,
-                    form.usu_pass.data,
                     form.usu_date.data.isoformat(),
+                    form.usu_user.data,
+                    form.usu_pass.data,                    
                     form.usu_concept.data,
                     form.usu_quantity.data ])
             
@@ -124,9 +148,9 @@ def update(id):
         form.usu_city.data = resultado[6]
         form.usu_birthd.data = datetime.strptime(resultado[7],"%Y-%m-%d")
         form.usu_sex.data = resultado[8]
-        form.usu_user.data = resultado[9]
-        form.usu_pass.data = resultado[10]
-        form.usu_date.data = datetime.strptime(resultado[11],"%Y-%m-%d")
+        form.usu_user.data = resultado[10]
+        form.usu_pass.data = resultado[11]
+        form.usu_date.data = datetime.strptime(resultado[9],"%Y-%m-%d")
         form.usu_concept.data = resultado[12]
         form.usu_quantity.data = resultado[13]
 
@@ -143,9 +167,9 @@ def update(id):
                     form.usu_city.data,
                     form.usu_birthd.data.isoformat(),
                     form.usu_sex.data,
-                    form.usu_user.data,
-                    form.usu_pass.data,                    
                     form.usu_date.data.isoformat(),
+                    form.usu_user.data,
+                    form.usu_pass.data,                
                     form.usu_concept.data,
                     form.usu_quantity.data ])
             flash("Movimiento actualizado correactamente!!!")

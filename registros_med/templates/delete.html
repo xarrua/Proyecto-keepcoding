@@ -2,19 +2,10 @@
 
 {% block section %}
 
-<div class="container">
-    <nav>
-        <ul>
-          <li><strong>App Web</strong></li>
-        </ul>
-        <ul>
-            <li><a href="/" role="button">Inicio</a></li>
-          <li><a href="/new" role="button">Nuevo</a></li>
-        </ul>
-    </nav>
-</div>
 
-<h1>Previsualización</h1>
+<h1>Previsualización<a href="{{ url_for('registro') }}"><span class="material-symbols-outlined">
+  undo
+  </span></a></h1>
 <article>
     <p><strong>Nombre: </strong>{{data[1]}}</p>
     <p><strong>Apellido: </strong>{{data[2]}}</p>
