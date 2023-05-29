@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>{{title}}</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -16,13 +16,13 @@
       <header class="blog-header lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <a class="link-secondary" href="{{ url_for('josu') }}">About</a>
+            <a class="link-secondary" href="{{ url_for('about') }}">About</a>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="{{ url_for('index') }}">Home</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="link-secondary" href="#" aria-label="بحث">
+            <a class="link-secondary" href="{{ url_for('josu') }}" aria-label="XaRrUa">
               
             </a>
             <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('login') }}">Login</a>
@@ -37,7 +37,7 @@
           <a class="p-2 link-secondary" href="{{ url_for('registro') }}">usuarios</a>
           <a class="p-2 link-secondary" href="{{ url_for('home') }}">profesionales</a>
           <a class="p-2 link-secondary" href="{{ url_for('psico') }}">psico</a>
-          <a class="p-2 link-secondary" href="#"> 5</a>
+          <a class="p-2 link-secondary" href="{{ url_for('prof') }}">Cuentas Web</a>
           <a class="p-2 link-secondary" href="#">6</a>
    
         </nav>
@@ -47,9 +47,9 @@
     <main class="container">
       <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
         <div class="col-md-6 px-0">
-          <h1 class="display-4 fst-italic">App Flask.py</h1>
+          <h1 class="display-4 fst-italic" >App Flask.py</h1>
           <p class="lead my-3">Aplicación web de servicios médicos</p>
-          <p class="lead mb-0"><a href="{{ url_for('home') }}" class="text-white fw-bold">Más Información...</a></p>
+          <p class="lead mb-0"><a href="{{ url_for('login') }}" class="text-white fw-bold">Más Información...</a></p>
         </div>
       </div>
 
@@ -102,57 +102,83 @@
               <p>App desarrollada con Python, Flask, html, css y js para presentacion de proyecto final de KeepCoding.</p>
             </blockquote>
             <p>mas.</p>
-            <h2>subtitulo</h2>
-            <p>parrafo</p>
-            <h3>عنوان فرعي</h3>
-            <p>ألهمت هذه العملية علماء وكالة الفضاء الأمريكية (ناسا) خلال الستينيات من القرن الماضي، لبحث فكرة إطعام روَّاد الفضاء في مهمات الفضاء الطويلة مثل السفر إلى المريخ. وكانت واحدة من الأفكار الواعدة تصنيع الغذاء عن طريق ثاني أكسيد الكربون الذي ينتجه روَّاد الفضاء، لكن ليس بواسطة النباتات بل عن طريق ميكروبات صغيرة وحيدة الخلية قادرة على حصد ثاني أكسيد الكربون لإنتاج كميات وفيرة من البروتين المغذي على شكل مسحوق عديم النكهة، كما يمكن استخدام المادة في صنع الأطعمة المألوفة لدينا.</p>
-            <pre><code>Example code block</code></pre>
-            <p>وخلافاً لما هو الحال في عالم النبات، فإن هذه الميكروبات لا تستخدم الضوء كما يحدث في عملية البناء الضوئي التي تستخدمها النباتات للحصول على الغذاء، أي لأنها قادرة على النمو في الظلام. تسمى هذه البكتريا "هيدروجينوتروف" (Hydrogenotrophs)، وهي تستخدم الهيدروجين كوقود لإنتاج الغذاء من ثاني أكسيد الكربون. فعندما يُنتج روَّاد الفضاء ثاني أكسيد الكربون، تلتقطه الميكروبات، ويتحوَّل مع مدخلات أخرى إلى غذاء غني بالكربون. وبهذه الطريقة سوف نحصل على دورة كربون مغلقة الحلقة.</p>
-            <h3>عنوان فرعي</h3>
-            <p>بعد مرور أكثر من نصف قرن على أبحاث ناسا، تعمل حالياً عدة شركات في قطاع البيولوجيا التركيبية من ضمنها إير بروتين (Air Protein) وسولار فودز (Solar Foods) على تطوير جيل جديد من المنتجات الغذائية المستدامة، من دون وجود بصمة كربونية. ولن تقتصر هذه المنتجات الغذائية على روَّاد الفضاء فحسب، بل سوف تمتد لتشمل جميع سكان الأرض، وسوف تُنتَج في فترة زمنية قصيرة، بدلاً من الشهور، ومن دون الاعتماد على الأراضي الزراعية. وهذا يعني الحصول على منتجات غذائية بشكل سريع جداً. كما سيصبح من الممكن تصنيع الغذاء بطريقة عمودية من خلال هذه الميكروبات، بدلاً من الطريقة الأفقية التقليدية الشبيهة بتقنية الزراعة العمودية الحديثة. وهذا يعني توفير منتجات غذائية أكبر من المساحة نفسها.</p>
-            <p>يتكوَّن الغذاء البشري من ثلاثة أنواع رئيسة، هي:</p>
+
+          <article class="blog-post">
+            <h2 class="blog-post-title mb-1">Terapia de realidad virtual, un enfoque en la rehabilitación de pacientes</h2>
+            <p class="blog-post-meta">09/02/2023 <a href="https://www.elhospital.com/es/noticias/terapia-de-realidad-virtual-un-enfoque-en-la-rehabilitacion-de-pacientes">Sebastián López Bello </a></p>
+            <h3>Por medio del uso de tecnologías de realidad virtual, es posible proveer un ambiente capaz de realizar ejercicios de rehabilitación y terapia.</h3>
+            <p>La recuperación de pacientes con realidad virtual se basa en el uso de tecnologías de realidad virtual para proporcionar un ambiente interactivo y controlado en el que los pacientes pueden realizar ejercicios de rehabilitación y terapia. Los pacientes utilizan un dispositivo de realidad virtual, como un casco con pantalla incorporada, para sumergirse en un ambiente virtual y realizar tareas específicas diseñadas para ayudar en su recuperación. </p>
+            <p>Los orígenes de la realidad virtual o VR, por si siglas en inglés, se remontan a 1960 a manos del científico Ivan Sutherland, 50 años después, con los avances tecnológicos y los lanzamientos de dispositivos de realidad virtual modernos, es posible aplicar esta tecnología en el campo médico por medio de la rehabilitación de pacientes con lesiones o daños cereales.</p>
+            <p>Los ejercicios implementados para la rehabilitación consisten en movimientos instruidos por el médico, juegos terapéuticos, y la exposición a situaciones que pueden ser difíciles de manejar en la vida real para el tema psiquiátrico. Los profesionales de la salud pueden supervisar y ajustar la terapia a medida que el paciente progresa.</p>
+            <h3>¿Qué tipos de pacientes pueden ser asistidos con la realidad virtual? </h3>
+            <p>La realidad virtual se utiliza para tratar a una variedad de pacientes con diferentes afecciones. Algunos ejemplos incluyen:</p>
+          
             <ul>
-              <li>البروتينات</li>
-              <li>الكربوهيدرات</li>
-              <li>الدهون</li>
+              <li>Pacientes con lesiones cerebrales traumáticas o accidentes cerebrovasculares, la terapia de realidad virtual puede ayudar a mejorar la capacidad cognitiva y motora en estos pacientes.</li>
+              <li>Pacientes con trastornos de ansiedad: la exposición a situaciones virtuales que simulan ansiedad pueden ayudar a reducir los síntomas y posteriormente controlarlos.</li>
+              <li>Pacientes con trastornos de dolor crónico: la realidad virtual puede ayudar a reducir el dolor al proporcionar un ambiente de distracción.</li>
+              <li>Pacientes con trastornos de esquizofrenia: la terapia de realidad virtual puede ayudar a mejorar la capacidad social y emocional del paciente.</li>
+              <li>Pacientes con trastornos de estrés postraumático: la realidad virtual puede ayudar a tratar los síntomas de estrés postraumático mediante la exposición a situaciones virtuales que simulan traumas.</li>
+              <li>Pacientes con trastornos de la movilidad: la terapia de realidad virtual puede ayudar a mejorar la capacidad de movimiento y coordinación.</li>
+            <h3>Compañías y centros médicos que aplican la realidad virtual en la medicina</h3> 
+              <li>La compañía de tecnología, VirtualRehab, desarrolla soluciones de terapia de realidad virtual para pacientes con lesiones cerebrales traumáticas, trastornos de dolor crónico, y trastornos de movilidad.</li>
+              <li>La compañía de tecnología médica, Psious, desarrolla programas de terapia de realidad virtual para pacientes con trastornos de ansiedad y trastornos mentales.</li>
+              <li>Hospitales como el Hospital Mount Sinai en Nueva York y el Hospital de la Universidad de California, San Francisco, han implementado programas de terapia de realidad virtual para pacientes con lesiones cerebrales traumáticas, dolor crónico y trastornos de ansiedad.</li>
+              <li>La compañía de tecnología médica, MindMaze, desarrolla soluciones de realidad virtual para pacientes con lesiones cerebrales traumáticas y para pacientes con trastornos mentales.</li>
+              <li>La compañía de tecnología médica, Firsthand Technology, desarrolla programas de terapia de realidad virtual para pacientes con trastornos de ansiedad y trastornos de estrés postraumático.</li>
             </ul>
-            <p>وتتكوَّن البروتينات من الأحماض الأمينية، وهي مجموعة من المركبات العضوية يبلغ عددها في جسم الإنسان عشرين حمضاً أمينياً، من بينها تسعة أساسية يحصل عليها الجسم من الغذاء. وتتكوَّن الأحماض الأمينية بشكل أساس من:</p>
+            
+            <p>Hay muchas otras compañías y hospitales que utilizan la tecnología de realidad virtual en diferentes países, estos son solo algunos ejemplos de cómo esta tecnología está siendo utilizada en la atención médica.</p>
+            <p>A realidad virtual se ha convertido cada vez más en una herramienta esencial en los hospitales y compañías de salud en todo el mundo. Algunos de los principales hospitales y compañías que han empezado a implementar la realidad virtual como método de sanación. Aunque la terapia asistida por VR no necesariamente significa una cura definitiva para la condición del paciente, la rehabilitación por VR se ha convertido en una alternativa para aquellos pacientes que buscan una mejora en su calidad de vida.</p>
+              </article>
+  
+            <article class="blog-post">
+              <h2 class="blog-post-title mb-1">Tango-terapia contra el Parkinson</h2>
+              <p class="blog-post-meta">23.02.2009 <a href="https://www.muyinteresante.es/salud/17362.html">Elena Sanz  </a></p>
+            <h2>Investigadores de la Facultad de Medicina de la Universidad de Washington han demostrado que bailar tango mejora los síntomas de los pacientes con Parkinson, en especial la movilidad y el equilibrio.</h2>
+            <p>Investigadores de la Facultad de Medicina de la Universidad de Washington han demostrado que bailar tango mejora los síntomas de los pacientes con Parkinson, en especial la movilidad y el equilibrio.
+
+              Según revela el estudio que aparece en el último número de la revista Journal of Neurologic Physical Therapy, repetidas sesiones de tango argentino reportan más beneficios a los pacientes que sesiones de ejercicio de similar duración. Pero, ¿qué tiene el tango que no tengan otras danzas? Aunque el baile en general podría beneficiar a los pacientes de Parkinson, varios aspectos del movimiento del tango podrían ser especialmente útiles para estos pacientes, entre ellos el equilibrio dinámico, las vueltas, la iniciación del movimiento, el movimiento a distintas velocidades, y caminar hacia atrás.
+              
+              Estudios previos realizados en Argentina ya habían demostrado que bailar tango es recomendable para pacientes con cardiopatías, ya que ayuda a disminuir la frecuencia cardíaca de reposo y aumenta la cantidad de sangre que el corazón expulsa en cada latido.</p>
+          <article class="blog-post">
+            <h2 class="blog-post-title mb-1">Trastorno psicosomático</h2>
+            <p class="blog-post-meta">11-04-2023 <a href="https://www.topdoctors.es/diccionario-medico/trastorno-psicosomatico">Dr. José Ángel Bueno </a></p>
+          
+            <h3>¿Qué son los trastornos psicosomáticos?</h3>
+            <p>Los trastornos psicosomáticos son una condición en la cual los síntomas físicos se ven agravados por factores mentales.</p>
+            <p>Algunas condiciones físicas pueden verse agravadas por factores mentales, como el estrés y la ansiedad.  El estado mental de una persona puede hacer que la condición física mejore o se deteriore en un momento dado. Muchas enfermedades y afecciones pueden verse influidas por el estado mental del paciente; sin embargo, algunas condiciones son más sensibles que otras al estado mental de una persona.</p>
+            <pre><code>En los trastornos psicosomáticos los síntomas físicos se ven agravados por factores mentales</code></pre>
+            <p>Por ejemplo, las erupciones cutáneas y las afecciones de la piel, incluidas la psoriasis y el eccema, pueden empeorar si la persona se siente estresada o ansiosa; la hipertensión es una condición psicosomática común, en la cual el estrés o la ansiedad aumentan la presión arterial; los enfermos de enfermedades cardíacas y los pacientes con diabetes tipo 2 también pueden verse afectados por este tipo de trastorno.</p>
+            <p>Los trastornos psicosomáticos a menudo tienen efectos negativos sobre el sistema respiratorio, el sistema gastrointestinal y el sistema cardiovascular. Todos pueden tener efectos negativos en la calidad de vida de una persona, comprometiendo su desempeño normal.</p>
+            <h3>¿Qué categorías existen dentro de los trastornos psicosomáticos?</h3>
+            <p>Los trastornos psicosomáticos generalmente se dividen en tres categorías diferentes.</p>
             <ol>
-              <li>الكربون</li>
-              <li>الهيدروجين</li>
-              <li>الأكسجين</li>
-              <li>النيتروجين</li>
+              <li>Pacientes que sufren de una condición física y una condición mental: las condiciones pueden no estar relacionadas, pero el tratamiento para cada condición se complica por la presencia de la otra.</li>
+              <li>Pacientes con una condición física que causa depresión o ansiedad: un ejemplo de esto podría ser un paciente con una afección a largo plazo, como un tumor, que se siente deprimido debido al pronóstico.</li>
+              <li>Pacientes con trastornos somatomorfos, en los que los síntomas físicos son causados ​​por una enfermedad mental: existen diferentes tipos de trastornos somatomorfos, incluida la hipocondría, en los que un pequeño síntoma se magnifica en la mente de la persona, lo que genera la preocupación de verse afectado por una afección aún más grave.</li>
             </ol>
-            <p>ومن الملاحظ أن النيتروجين يشكِّل نسبة %78 من الهواء، كما أن الهيدروجين نحصل عليه من خلال التحليل الكهربائي للماء، ومن الممكن نظرياً سحب الكربون من الهواء لتشكيل هذه الأحماض، ذلك أن الكربون هو العمود الفقري للأحماض الأمينية، كما أن الحياة على كوكب الأرض قائمة على الكربون لقدرته على تكوين سلاسل كربونية طويلة، وهذا ما تفعله الميكروبات بتصنيع أحماض أمينية من ثاني أكسيد الكربون من خلال مجموعة من التفاعلات الكيميائية المعقَّدة. وإضافة إلى صنع وجبات غنية بالبروتين، فهذه الميكروبات تنتج منتجات أخرى مثل الزيوت التي لها عديد من الاستخدامات.</p>
-          </article>
-
-          <article class="blog-post">
-            <h2 class="blog-post-title mb-1">تدوينة أخرى</h2>
-            <p class="blog-post-meta">23 ديسمبر 2020 بواسطة <a href="#">Jacob</a></p>
-
-            <p>في الوقت الحالي، تدرس عدَّة شركات هذه الميكروبات بشكل أعمق، وتستزرعها من أجل الحصول على الغذاء. ففي عام 2019م، أعلن باحثون في شركة (Air Protein) الأمريكية نجاحهم في تحويل ثاني أكسيد الكربون الموجود في الهواء إلى لحوم صناعية مصنوعة من البروتين، التي لا تتطلَّب أي أرض زراعية، بل هي معتمدة بشكل أساسي على الهواء.</p>
-            <blockquote>
-              <p>تم تصنيع اللحوم بأنواع عديدة</p>
-            </blockquote>
-            <p>إذ استخدم هؤلاء الباحثون الهواء والطاقة المتجدِّدة كمدخلات في عملية مشابهة للتخمير، لإنتاج بروتين يحتوي على الأحماض الأمينية التسعة الأساسية وغني بالفيتامينات والمعادن، كما أنه خالٍ من الهرمونات والمضادات الحيوية والمبيدات الحشرية ومبيدات الأعشاب.</p>
-            <p> وتم تصنيع اللحوم بأنواع عديدة بما فيها الدواجن والأبقار والمأكولات البحرية، من دون حصول انبعاثات كربونية، على عكس تربية الأبقار التي تسهم في انبعاث غاز الميثان أحد غازات الاحتباس الحراري.</p>
-          </article>
-
-          <article class="blog-post">
-            <h2 class="blog-post-title mb-1">Articulo</h2>
-            <p class="blog-post-meta">14 دfecha: 2020  <a href="#">Autor</a></p>
-
-            <p>كما أن الشركة الفنلندية (Solar Foods) طوَّرت تقنية لإنتاج البروتين من الهواء، حيث تبدأ العملية بتقسيم الماء إلى مكوناته الهيدروجين والأكسجين عن طريق الكهرباء. فالهيدروجين يوفِّر الطاقة للبكتريا لتحويل ثاني أكسيد الكربون والنيتروجين الموجودين في الهواء إلى مادة عضوية غنية بالبروتين بشكل أكفأ من نمو النباتات باستخدام البناء الضوئي. وهذا البروتين يشبه دقيق القمح وقد أطلق عليه اسم "سولين" (Solein).</p>
-            <p>وتقوم الشركة حالياً بجمع البيانات حول المنتج الغذائي لتقديمه إلى الاتحاد الأوروبي بهدف الحصول على ترخيص غذائي، كما أنها تخطط لبدء الإنتاج التجاري في العام المقبل 2021م. وقد أوضحت الشركة أنها مهتمة بإنتاج أطعمة صديقة للبيئة من خلال استخدام المواد الأساسية: الكهرباء وثاني أكسيد الكربون، وهذه الأطعمة سوف تجنبنا الأثر السلبي البيئي للزراعة التقليدية الذي يشمل كل شيء من استخدام الأرض والمياه إلى الانبعاثات الناتجة من تسميد المحاصيل أو تربية الحيوانات.</p>
-            <p>وعلى هذا، فإن البروتينات المشتقة من الميكروبات سوف:</p>
+            <h3>Tratamientos para trastornos psicosomáticos</h3>
             <ul>
-              <li>توفر حلاً ممكناً في ظل زيادة الطلب العالمي المستقبلي على الغذاء</li>
-              <li>تتوسع مصانع الغذاء في المستقبل لتكون أكفأ وأكثر استدامة</li>
-              <li>تصبح قادرة على توفير الغذاء لروَّاد الفضاء في سفرهم إلى المريخ وجميع سكان كوكب الأرض في عام 2050م</li>
+              <li>Si se cree que un paciente padece un trastorno psicosomático, a menudo lo derivarán a un especialista en Psiquiatría o en Psicología. La terapia cognitivo conductual a menudo se usa para tratar estas afecciones.</li>
+              <li>El objetivo de la terapia es proporcionar al paciente nuevas habilidades que le permitan hacer frente a los síntomas y obtener una comprensión más profunda de la condición.         </li>
+              
             </ul>
-            <p>فتخيّل أن الميكروبات ستكون مصانع المستقبل، وأن غذاء المستقبل سيكون مصنوعاً من الهواء! وأن عام 2050م سيكون مختلفاً تماماً عن عالمنا اليوم. فهو عالم من دون زراعة ولا تربية حيوانات من أجل الغذاء! قد يبدو ذلك خيالياً لكنه ليس مستحيلاً!</p>
+           </article>
+
+          <article class="blog-post">
+            <h2 class="blog-post-title mb-1">Efectividad de la terapia de tango en pacientes con la enfermedad de parkinson: una revisión sistemática</h2>
+            <p class="blog-post-meta"> 2017-06-26<a href="https://repositorio.unican.es/xmlui/handle/10902/15575">Atribución-NoComercial-SinDerivadas 3.0 España</a></p>
+
+            <p>Palabras clave, Enfermedad de Parkinson, Terapia de baile, Parkinson’s Disease,  Dance therapy.</p>
+            <blockquote>
+              <p>Resumen:</p>
+            </blockquote>
+            <p>Objetivo: Analizar si la terapia de tango, como parte del tratamiento rehabilitador, produce efectos beneficiosos en pacientes que padecen la enfermedad de Parkinson. Métodos: Mediante una búsqueda bibliográfica sistemática a través de la base de datos PubMed, Cochrane plus y PEDro. Seleccionamos diferentes artículos, que cumplieran con los criterios de inclusión y exclusión, y con una puntuación ≥ 6 puntos en la escala CASPe. Resultados: Los artículos muestran mejorías a favor de la terapia de tango, en el equilibrio, en la marcha, en las habilidades motrices así como en aspectos sociales y de participación. Discusión: En la mayoría de los artículos el cegamiento fue simple, el tamaño muestral fue pequeño y los resultados pudieron verse afectados por las fluctuaciones implícitas en esta enfermedad. Además, se requiere más investigación para poder demostrar la efectividad de esta terapia a largo plazo. Conclusión: Comprobamos que los estudios revisados muestran que la terapia de tango es eficaz en pacientes diagnosticados con la enfermedad de Parkinson.</p>
+            <p>ABSTRACT: Objective: Analyze if tango therapy, as part of the rehabilitation treatment, produce beneficial effects in patients suffering from Parkinson's disease. Methods: Using a systematic literature search through the PubMed database, Cochrane plus and PEDro selected different articles that met the inclusion and exclusion criteria and scored ≥ 6 points on the CASPe scale Results: The articles show improvements in favor of tango therapy, in balance, in gait, in motor skills as well as in social and participation aspects. Discussion: Blinding was simple in most articles, sample size was small and results could be affected by the fluctuations implicit in this disease. In addition, more research is needed to demonstrate the effectiveness of this long-term therapy. Conclusion: We cheked that the studies reviewed show that tango therapy is effective in patients diagnosed with Parkinson's disease.</p>
           </article>
 
+        
           <nav class="blog-pagination" aria-label="Pagination">
             <a class="btn btn-outline-primary rounded-pill" href="#">Mas</a>
             <a class="btn btn-outline-secondary rounded-pill disabled">Otros</a>
@@ -199,9 +225,9 @@
   </section>
  
   <footer class="blog-footer">
-    <p>&copy; 2024 XaRrUaـ <a href="https://getbootstrap.com/">Bootstrap</a> referencias <a href="https://twitter.com/mdo"><bdi lang="en" dir="ltr">@mdo</bdi></a>.</p>
+    <p>&copy; 2023 XaRrUaـ | J. Valverde | c/Flask-Python y <a href="https://getbootstrap.com/">Bootstrap</a> respaldo <a href="github.com/xarrua"><bdi lang="en" dir="ltr">GH</bdi></a>.</p>
     <p>
-      <a href="#">otros</a>
+      <a href="xarrua.github.io">+</a>
     </p>
   </footer>
   

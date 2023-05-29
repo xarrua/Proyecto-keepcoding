@@ -13,13 +13,9 @@
     </nav>
 </div>
 
-
-
-
 <form action="/update/{{usu_idform}}" method="POST">
     {{dataForm.csrf_token}}
 
-    <div class="mb-3">
     {{dataForm.usu_name.label}}
     {{dataForm.usu_name}}
     {% if dataForm.usu_name.errors %}
@@ -29,9 +25,7 @@
         {% endfor %}
         </ul>
     {% endif %}{{dataForm.usu_date.label}}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_lastname}}
     {% if dataForm.usu_lastname.errors %}
         <ul class="errors">
@@ -40,9 +34,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_email.label}}
     {{dataForm.usu_email}}
     {% if dataForm.usu_email.errors %}
@@ -52,9 +44,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_phone.label}}
     {{dataForm.usu_phone}}
     {% if dataForm.usu_phone.errors %}
@@ -64,9 +54,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_country.label}}
     {{dataForm.usu_country}}
     {% if dataForm.usu_country.errors %}
@@ -76,9 +64,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_city.label}}
     {{dataForm.usu_city}}
     {% if dataForm.usu_city.errors %}
@@ -88,9 +74,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_birthd.label}}
     {{dataForm.usu_birthd}}
     {% if dataForm.usu_birthd.errors %}
@@ -100,26 +84,17 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
-    <label for="usu_sex">sexo: </label>
-    <!--{{dataForm.usu_sex.label(class="form-label")}}-->
-        <select class="form-control" name="usu_sex" id="usu_sex">
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
-        </select>
-    <!--{{dataForm.usu_sex(class="form-control")}}-->
+    {{dataForm.usu_sex.label}}
+    {{dataForm.usu_sex}}
     {% if dataForm.usu_sex.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_sex.errors %}
-            <li class="form-text">{{ error }}</li>
+            <li>{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
-      
-    <div class="mb-3">
+
     {{dataForm.usu_date.label}}
     {{dataForm.usu_date}}
     {% if dataForm.usu_date.errors %}
@@ -129,9 +104,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_user.label}}
     {{dataForm.usu_user}}
     {% if dataForm.usu_user.errors %}
@@ -141,9 +114,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_pass.label}}
     {{dataForm.usu_pass}}
     {% if dataForm.usu_pass.errors %}
@@ -153,9 +124,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">
     {{dataForm.usu_concept.label}}
     {{dataForm.usu_concept}}
     {% if dataForm.usu_concept.errors %}
@@ -165,9 +134,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
 
-    <div class="mb-3">    
     {{dataForm.usu_quantity.label}}
     {{dataForm.usu_quantity}}
     {% if dataForm.usu_quantity.errors %}
@@ -177,31 +144,6 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
-
-    <div class="mb-3">
-    {{dataForm.usu_foto.label}}
-    {{dataForm.usu_foto}}
-    {% if dataForm.usu_foto.errors %}
-        <ul class="errors">
-        {% for error in dataForm.usu_foto.errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
-
-    <div class="mb-3">
-    {{dataForm.usu_profession}}
-    {{dataForm.usu_profession}}
-    {% if dataForm.usu_profession.errors %}
-        <ul class="errors">
-        {% for error in dataForm.usu_profession.errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
 
     {{dataForm.submit}}
 

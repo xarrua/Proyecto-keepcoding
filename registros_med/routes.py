@@ -29,69 +29,91 @@ def validateForm(datosFormulario):
         errores.append("El concepto no puede ir vacio")
     if  datosFormulario['usu_quantity'] == "" or float(datosFormulario['usu_quantity']) == 0.0:
         errores.append("El monto debe ser distinto de 0 y de vacio")
-    
+    if datosFormulario["usu_foto"] =="":
+        errores.append("La imagen no es valida (jpg o png)")
+    if datosFormulario["usu_profession"]:
+        errores.append("Profesión o actividad no puede ir vacia")
     return errores
-
+#Home e Index
 @app.route('/')
 def index():    
     return render_template("index.html", title=home)
 
-@app.route('/sswe')
-def sswe():
-    return render_template("personal/sswe.html")
-
-@app.route('/pswe')
-def pswe():
-    return render_template("personal/pswe.html", name="Swelyn")
-
-@app.route('/sjava')
-def sjava():
-    return render_template("personal/sjava.html", name="Josué")
-
-@app.route('/pjava')
-def pjava():
-    return render_template("personal/pjava.html", name="Josué")
+#login
 
 
 
+app.secret_key = 'mysecretkey'
 
-@app.route("/login", methods=['GET', 'POST'])
+
+
+# Ruta de registro
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        email = request.form['email']
+        telefono = request.form['telefono']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        
+        # Verificar que los campos no estén vacíos
+        if nombre and apellido and email and telefono and password and confirm_password:
+            # Verificar la longitud mínima de la contraseña
+            if len(password) >= 6:
+                # Verificar si las contraseñas coinciden
+                if password == confirm_password:
+                    # Aquí puedes realizar el proceso de registro del usuario
+                    # por ejemplo, guardar los datos en una base de datos
+                    
+                    # Redireccionar a la página de inicio de sesión
+                    return redirect('/login')
+                else:
+                    error = 'Las contraseñas no coinciden'
+            else:
+                error = 'La contraseña debe tener al menos 6 caracteres'
+        else:
+            error = 'Por favor, completa todos los campos'
+            
+        return render_template('register.html', error=error)
+    else:
+        return render_template('register.html')
+
+# Ruta de inicio de sesión
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-  
-    return render_template("login.html", title="login")
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        
+        print(request.form['username'])
+        print(request.form['password'])
+        return render_template("login.html")
+    
+        
+        # Aquí puedes realizar el proceso de inicio de sesión
+        # por ejemplo, verificar las credenciales en una base de datos
+        
+        # Redireccionar a la página de bienvenida
+        #return redirect('/welcome')
+    else:
+        return render_template('login.html')
 
-@app.route('/profesionals')
-def home():
-    return render_template("profesionals.html", title="profesionals")
+# Ruta de bienvenida
+@app.route('/welcome')
+def welcome():
+    return render_template('registro.html')
 
-@app.route("/about")
-def about():
-    return render_template("about.html", title="about")
+#base de datos
 
 @app.route('/registro')
 def registro():
     registros = select_all()
     return render_template("registro.html", data = registros,ingreso=select_ingreso(),egreso= select_egreso())
 
-@app.route('/java')
-def java():
-    return render_template('personal/java.html', title=java)
 
-@app.route('/swe')
-def swe():
-    return render_template('personal/swe.html', title=swe)
 
-@app.route('/josu')
-def josu():
-    return render_template('personal/josu.html', title=josu)
-
-@app.route('/payment')
-def payment():
-    return render_template('payment/form.html', title="checkout")
-
-@app.route('/psico')
-def psico():
-    return render_template('psico.html', title=psico)
 
 @app.route("/new",methods=["GET","POST"])
 def create():
@@ -115,7 +137,9 @@ def create():
                     form.usu_user.data,
                     form.usu_pass.data,                    
                     form.usu_concept.data,
-                    form.usu_quantity.data ])
+                    form.usu_quantity.data,
+                    form.usu_foto.data,
+                    form.usu_profession.data ])
             
             flash("Movimiento registrado correactamente!!!")
             return redirect('/registro')  
@@ -131,7 +155,7 @@ def remove(id):
     else:
         delete_by(id)
         flash("Movimiento eliminado correctamente !!!")
-        return redirect("/registro")
+        return redirect("/registro","/psico")
     
 @app.route("/update/<int:id>",methods=["GET","POST"])
 def update(id):
@@ -146,13 +170,15 @@ def update(id):
         form.usu_phone.data = resultado[4]
         form.usu_country.data = resultado[5]
         form.usu_city.data = resultado[6]
-        form.usu_birthd.data = datetime.strptime(resultado[7],"%Y-%m-%d")
+        form.usu_birthd.data = resultado[7] # datetime.strptime(resultado[7],"%Y-%m-%d")
         form.usu_sex.data = resultado[8]
         form.usu_user.data = resultado[10]
         form.usu_pass.data = resultado[11]
-        form.usu_date.data = datetime.strptime(resultado[9],"%Y-%m-%d")
+        form.usu_date.data = resultado[9] #datetime.strptime(resultado[9],"%Y-%m-%d")
         form.usu_concept.data = resultado[12]
         form.usu_quantity.data = resultado[13]
+        form.usu_foto.data = resultado[14]
+        form.usu_profession.data = resultado[15]
 
         return render_template("update.html",dataForm = form, idform = id)
     else:
@@ -171,11 +197,101 @@ def update(id):
                     form.usu_user.data,
                     form.usu_pass.data,                
                     form.usu_concept.data,
-                    form.usu_quantity.data ])
+                    form.usu_quantity.data,
+                    form.usu_foto.data,
+                    form.usu_profession.data ])
             flash("Movimiento actualizado correactamente!!!")
-            return redirect("/registro")
+            return redirect("/registro", "/psico")
        else:
             return render_template("create.html",dataForm=form)
+
+
+# Cuentas de profesionales 
+@app.route('/prof')
+def prof():
+    return render_template('profesionals/prof.html')
+
+@app.route('/create_prof')
+def create_prof():
+    return render_template('/profesionals/create_prof.html')
+
+@app.route('/delete_prof')
+def delete_prof():
+    return render_template('profesionals/delete_prof.html')
+
+@app.route('/update_prof')
+def update_prof():
+    return render_template('profesionals/update_prof.html')
+
+
+#paginas profesionales
+
+#java
+@app.route('/pjava')
+def pjava():
+    return render_template("personal/pjava.html", name="Josué")
+
+@app.route('/sjava')
+def sjava():
+    return render_template("personal/sjava.html", name="Josué")
+
+@app.route('/java')
+def java():
+    return render_template('personal/java.html', title=java)
+
+#swe
+@app.route('/pswe')
+def pswe():
+    return render_template("personal/pswe.html", title="perfil", name="Swelyn")
+
+@app.route('/sswe')
+def sswe():
+    return render_template("personal/sswe.html",title="perfil", name="Swelyn")
+
+
+@app.route('/swe')
+def swe():
+    return render_template('personal/swe.html', title="cv", name="Swelyn")
+
+
+#josu
+@app.route('/pjosu')
+def pjosu():
+    return render_template('personal/pjosu.html')
+
+@app.route('/sjosu')
+def sjosu():
+    return render_template('personal/sjosu.html')
+
+
+@app.route('/josu')
+def josu():
+    return render_template('personal/josu.html', title=josu)
+
+
+
+# Cobro de pacientes
+@app.route('/payment')
+def payment():
+    return render_template('payment/form.html', title="checkout")
+
+# otros
+
+
+@app.route('/profesionals')
+def home():
+    return render_template("profesionals.html", title="profesionals")
+
+@app.route('/psico')
+def psico():
+    return render_template('psico.html', title=psico)
+
+@app.route("/about")
+def about():
+    return render_template("about.html", title="about")
+
+
+
       
 
 

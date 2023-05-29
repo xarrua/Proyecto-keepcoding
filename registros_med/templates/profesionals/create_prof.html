@@ -1,115 +1,110 @@
 {% extends "base.html" %}
 {% block section %}
 
+
 <div class="container">
-    <nav>
-        <ul>
-          <li><strong>App Web</strong></li>
-        </ul>
-        <ul>
-           
-          <li><a href="/new" role="button">Nuevo</a></li>
-        </ul>
-    </nav>
-</div>
+    
+    <h2><a href="{{ url_for('registro') }}"><span class="material-symbols-outlined">
+        undo
+        </span></a><strong>App Web</strong></h2>
+        
+  </div>
 
-
-
-
-<form action="/update/{{usu_idform}}" method="POST">
+<form action="/new" method="POST">
     {{dataForm.csrf_token}}
-
     <div class="mb-3">
-    {{dataForm.usu_name.label}}
-    {{dataForm.usu_name}}
+
+    {{dataForm.usu_name.label(class="form-label")}}
+    {{dataForm.usu_name(class="form-control")}}
     {% if dataForm.usu_name.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_name.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}{{dataForm.usu_date.label}}
     </div>
 
     <div class="mb-3">
-    {{dataForm.usu_lastname}}
+    {{dataForm.usu_lastname.label(class="form-label")}}
+    {{dataForm.usu_lastname(class="form-control")}}
     {% if dataForm.usu_lastname.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_lastname.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
+    </div>    
 
     <div class="mb-3">
-    {{dataForm.usu_email.label}}
-    {{dataForm.usu_email}}
+    {{dataForm.usu_email.label(class="form-label")}}
+    {{dataForm.usu_email(class="form-control")}}
     {% if dataForm.usu_email.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_email.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
+     </div>
 
     <div class="mb-3">
-    {{dataForm.usu_phone.label}}
-    {{dataForm.usu_phone}}
+    {{dataForm.usu_phone.label(class="form-label")}}
+    {{dataForm.usu_phone(class="form-control")}}
     {% if dataForm.usu_phone.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_phone.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
     <div class="mb-3">
-    {{dataForm.usu_country.label}}
-    {{dataForm.usu_country}}
+    {{dataForm.usu_country.label(class="form-label")}}
+    {{dataForm.usu_country(class="form-control")}}
     {% if dataForm.usu_country.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_country.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
     <div class="mb-3">
-    {{dataForm.usu_city.label}}
-    {{dataForm.usu_city}}
+    {{dataForm.usu_city.label(class="form-label")}}
+    {{dataForm.usu_city(class="form-control")}}
     {% if dataForm.usu_city.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_city.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
     <div class="mb-3">
-    {{dataForm.usu_birthd.label}}
-    {{dataForm.usu_birthd}}
+    {{dataForm.usu_birthd.label(class="form-label")}}
+    {{dataForm.usu_birthd(class="form-control")}}
     {% if dataForm.usu_birthd.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_birthd.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
     <div class="mb-3">
-    <label for="usu_sex">sexo: </label>
-    <!--{{dataForm.usu_sex.label(class="form-label")}}-->
-        <select class="form-control" name="usu_sex" id="usu_sex">
+    <label for="sex"></label>
+    {{dataForm.usu_sex.label(class="form-label")}}
+            <select name="sex" id="sex">
             <option value="masculino">Masculino</option>
             <option value="femenino">Femenino</option>
         </select>
-    <!--{{dataForm.usu_sex(class="form-control")}}-->
+    {{dataForm.usu_sex(class="form-control")}}
     {% if dataForm.usu_sex.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_sex.errors %}
@@ -118,93 +113,67 @@
         </ul>
     {% endif %}
     </div>
-      
+   
     <div class="mb-3">
-    {{dataForm.usu_date.label}}
-    {{dataForm.usu_date}}
+    {{dataForm.usu_date.label(class="form-label")}}
+    {{dataForm.usu_date(class="form-control")}}
     {% if dataForm.usu_date.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_date.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
     <div class="mb-3">
-    {{dataForm.usu_user.label}}
-    {{dataForm.usu_user}}
+    {{dataForm.usu_user.label(class="form-label")}}
+    {{dataForm.usu_user(class="form-control")}}
     {% if dataForm.usu_user.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_user.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
     <div class="mb-3">
-    {{dataForm.usu_pass.label}}
-    {{dataForm.usu_pass}}
+    {{dataForm.usu_pass.label(class="form-label")}}
+    {{dataForm.usu_pass(class="form-control")}}
     {% if dataForm.usu_pass.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_pass.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
     <div class="mb-3">
-    {{dataForm.usu_concept.label}}
-    {{dataForm.usu_concept}}
+    {{dataForm.usu_concept.label(class="form-label")}}
+    {{dataForm.usu_concept(class="form-control")}}
     {% if dataForm.usu_concept.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_concept.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
-    <div class="mb-3">    
-    {{dataForm.usu_quantity.label}}
-    {{dataForm.usu_quantity}}
+    <div class="mb-3">
+    {{dataForm.usu_quantity.label(class="form-label")}}
+    {{dataForm.usu_quantity(class="form-control")}}
     {% if dataForm.usu_quantity.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_quantity.errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
-
-    <div class="mb-3">
-    {{dataForm.usu_foto.label}}
-    {{dataForm.usu_foto}}
-    {% if dataForm.usu_foto.errors %}
-        <ul class="errors">
-        {% for error in dataForm.usu_foto.errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
-
-    <div class="mb-3">
-    {{dataForm.usu_profession}}
-    {{dataForm.usu_profession}}
-    {% if dataForm.usu_profession.errors %}
-        <ul class="errors">
-        {% for error in dataForm.usu_profession.errors %}
-            <li>{{ error }}</li>
+            <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     </div>
 
     {{dataForm.submit}}
-
-</form>
 
 {% endblock %}

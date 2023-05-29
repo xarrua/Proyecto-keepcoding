@@ -56,3 +56,6 @@ def select_egreso():
     conectEgreso.con.close()
 
     return resultadoEgreso[0][0]
+
+def ComprobacionPassword2():
+    pass

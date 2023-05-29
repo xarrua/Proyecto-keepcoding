@@ -91,6 +91,8 @@
      
   
   
+    <div class="align-self-center"><h2>Servicios</h2>
+
   
    <!-- /END THE FEATURETTES -->
   
@@ -99,45 +101,52 @@
         <div class="card-body">
           <h5 class="card-title">Cirugía</h5>
           <p class="card-text">Cirugía plastica y reparadora.</p>
-          <a href="{{ url_for('payment') }}" class="btn btn-primary">Agendar</a>
+          <a href="{{ url_for('payment') }}" class="btn btn-primary">50 US</a>
         </div>
       </div>
       <div class="card text-center mb-3" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">Consulta Medica</h5>
+          <img src="{{ url_for('static', filename='img/steto.png')}}" height="60" width="60">
           <p class="card-text">Precencial en alguno de los centro de atencion</p>
-          <a href="{{ url_for('registro') }}" class="btn btn-primary">agregar</a>
+          <a href="{{ url_for('registro') }}" class="btn btn-primary">15 US</a>
         </div>
       </div>
       <div class="card text-center mb-3" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">Telemedicina</h5>
-          <img src="{{ url_for('static', filename='img/steto.png')}}" alt="Imagen 2">
+          <img src="{{ url_for('static', filename='img/notebook.png')}}" alt="pc" height="60px" width="80px">
+         
           <p class="card-text">Difernetes medios, incluye receta, licencias y certificados digitales.</p>
-          <a href="{{ url_for('java') }}" class="btn btn-primary">ir</a>
+          <a href="{{ url_for('java') }}" class="btn btn-primary">10 U$S</a>
         </div>
       </div>
   
+
+      <h2>Horarios: </h2>
+      <p><strong>Domingo: </strong>11:00-12:00 hrs</p>
+      <p><strong>Lunes:    </strong>    9:00-20:00 hrs</p>
+      <p><strong>Martes: </strong>9:00-20:00 hrs</p>
+      <p><strong>Miercoes: </strong>9:00-20:00 hrs</p>
+      <p><strong>Jueves: </strong>9:00-20:00 hrs</p>
+      <p><strong>Viernes:</strong>9:00-20:00 hrs</p>
+      <p><strong>Sábado: </strong>cerrado</p>
+      <p>HORARIO DE ATENCIÓN
+        Lunes:	09:00 - 14:00 / 15:00 - 19:00
+        Martes:	09:00 - 14:00 / 15:00 - 19:00
+        Miércoles:	09:00 - 14:00 / 15:00 - 20:30
+        Jueves:	09:00 - 14:00 / 15:00 - 20:30
+        Viernes:	09:00 - 20:30
+        Sábado:	09:00 - 17:00
+        Domingo:	Cerrado
+        </p>
   
-      <div class="caja">
-        <img href="{{ url_for('payment') }}" alt="Imagen 2">
-        <a class="link-secondary" href="{{ url_for('payment') }}">checkput</a>
-        <div class="overlay">
-          <button>Agendar</button>
-        </div>
-        <p>Control<a class="link-secondary" href="{{ url_for('payment') }}">checkput</a></p>
-        <a class="link-secondary" href="{{ url_for('payment') }}">checkput</a>
-      </div>
-      <a class="link-secondary" href="{{ url_for('payment') }}">checkput</a>
+      <h2>Lugares</h2>
+      <p>Clínica:</p>
   
-      <div class="caja">
-        <img src="#" alt="Imagen 3">
-        <div class="overlay">
-          <button>Agendar</button>
-        </div>
-        <p>cirugía</p>     
-      </div>
-     
+      
+  
+     </div>
 
   <footer class="blog-footer">
     <p>&copy; 2024 XaRrUaـ <a href="https://getbootstrap.com/">Bootstrap</a> referencias <a href="https://twitter.com/mdo"><bdi lang="en" dir="ltr">@mdo</bdi></a>.</p>

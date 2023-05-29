@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block section %}
 
-
+<!--Presentacion de tabla-->
 <div class="container">
     
     <h2><a href="{{ url_for('registro') }}"><span class="material-symbols-outlined">
@@ -13,7 +13,7 @@
 <form action="/new" method="POST">
     {{dataForm.csrf_token}}
     <div class="mb-3">
-
+<!--Formulario de información-->
     {{dataForm.usu_name.label(class="form-label")}}
     {{dataForm.usu_name(class="form-control")}}
     {% if dataForm.usu_name.errors %}
@@ -98,13 +98,13 @@
     </div>
 
     <div class="mb-3">
-    <label for="sex"></label>
-    {{dataForm.usu_sex.label(class="form-label")}}
-            <select name="sex" id="sex">
+    <label for="usu_sex">sexo: </label>
+    <!--{{dataForm.usu_sex.label(class="form-label")}}-->
+        <select class="form-control" name="usu_sex" id="usu_sex">
             <option value="masculino">Masculino</option>
             <option value="femenino">Femenino</option>
         </select>
-    {{dataForm.usu_sex(class="form-control")}}
+    <!--{{dataForm.usu_sex(class="form-control")}}-->
     {% if dataForm.usu_sex.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_sex.errors %}
@@ -140,7 +140,10 @@
 
     <div class="mb-3">
     {{dataForm.usu_pass.label(class="form-label")}}
-    {{dataForm.usu_pass(class="form-control")}}
+    <!--{{dataForm.usu_pass(class="form-control")}}-->
+    <input class="form-control" type="password" name="usu_pass" placeholder="Contraseña" required><br>
+    
+    <!--<input class="form-control" type="password" name="confirm_usu_pass" placeholder="Confirmar Contraseña" required><br>-->
     {% if dataForm.usu_pass.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_pass.errors %}
@@ -149,6 +152,8 @@
         </ul>
     {% endif %}
     </div>
+
+  
 
     <div class="mb-3">
     {{dataForm.usu_concept.label(class="form-label")}}
@@ -173,7 +178,39 @@
         </ul>
     {% endif %}
     </div>
+<!--foto-->
+    <div class="mb-3">
+           <!--
+    <input type="file" name="txtFoto" id="txtFoto">
+    <br>
+    <br>
+    <input type="sibmit" value="Agregar">--> 
+  
+    {{dataForm.usu_foto.label(class="form-label")}}
+    {{dataForm.usu_foto(class="form-control")}}
+    {% if dataForm.usu_foto.errors %}
+        <ul class="errors">
+        {% for error in dataForm.usu_foto.errors %}
+            <li class="form-text">{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+
+    <div class="mb-3">
+    {{dataForm.usu_profession.label(class="form-label")}}
+    {{dataForm.usu_profession(class="form-control")}}
+    {% if dataForm.usu_profession.errors %}
+        <ul class="errors">
+        {% for error in dataForm.profession.errors %}
+            <li class="form-text">{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+
 
     {{dataForm.submit}}
+</form>
 
 {% endblock %}
