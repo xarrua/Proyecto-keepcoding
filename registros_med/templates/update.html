@@ -174,17 +174,21 @@
     {% endif %}
     </div>
 
-    <div class="mb-3">
-    {{dataForm.usu_foto.label(class="form-label")}}
-    {{dataForm.usu_foto(class="form-control")}}
-    {% if dataForm.usu_foto.errors %}
-        <ul class="errors">
-        {% for error in dataForm.usu_foto.errors %}
-            <li class="form-text">{{ error }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
+
+    <div class="mb-3">    
+        {{dataForm.usu_foto.label(class="form-label")}}  
+        <!--{{dataForm.usu_foto(class="form-control")}}--> 
+        <input type="file" name="txtFoto" id="txtFoto">      
+        {% if dataForm.usu_foto.errors %}
+            <ul class="errors">
+            {% for error in dataForm.usu_foto.errors %}
+                <li class="form-text">{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+
+
 
     <div class="mb-3">
     {{dataForm.usu_profession.label(class="form-label")}}

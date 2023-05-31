@@ -313,7 +313,37 @@ def psico():
 def about():
     return render_template("about.html", title="about")
 
+@app.route('/pruebas',methods=["GET","POST"])
+def pruebas():
+    registros = select_all()
+    form = RegistrosForm()
 
+    if request.method == "GET":
+        return render_template("pruebas.html",dataForm=form)
+    else:
+       
+        if form.validate_on_submit():
+            insert([form.usu_name.data,
+                    form.usu_lastname.data,
+                    form.usu_email.data,
+                    form.usu_phone.data,
+                    form.usu_country.data,
+                    form.usu_city.data,
+                    form.usu_birthd.data.isoformat(),
+                    form.usu_sex.data,
+                    form.usu_date.data.isoformat(),
+                    form.usu_user.data,
+                    form.usu_pass.data,                    
+                    form.usu_concept.data,
+                    form.usu_quantity.data,
+                    form.usu_foto.data,
+                    form.usu_profession.data ])
+            
+            
+            flash("Movimiento registrado correactamente!!!")
+            return redirect('/pruebas')  
+        else:
+            return render_template("pruebas.html",dataForm=form, data = registros, title="profesionals")
 
       
 

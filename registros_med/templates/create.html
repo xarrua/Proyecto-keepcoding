@@ -177,17 +177,24 @@
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
+    <br>
+    <br>
+<!--</div>
+
+        <form method="POST" action="/test_upload" enctype="multipart/form-data">
+         
+            <input type="text" name="nombre" placeholder="Nombre" required><br>
+           
+            <input type="file" name="foto" placeholder="adjuntefoto" accept="image/*"><br>
+            <button type="submit" class="btn">subir</button>
+        </form>
+    -->
+
 <!--foto-->
-    <div class="mb-3">
-           <!--
-    <input type="file" name="txtFoto" id="txtFoto">
-    <br>
-    <br>
-    <input type="sibmit" value="Agregar">--> 
-  
-    {{dataForm.usu_foto.label(class="form-label")}}
-    {{dataForm.usu_foto(class="form-control")}}
+    <div class="mb-3">    
+    {{dataForm.usu_foto.label(class="form-label")}}  
+    <!--{{dataForm.usu_foto(class="form-control")}}--> 
+    <input type="file" name="foto" placeholder="adjuntefoto" accept="image/*">      
     {% if dataForm.usu_foto.errors %}
         <ul class="errors">
         {% for error in dataForm.usu_foto.errors %}

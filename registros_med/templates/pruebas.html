@@ -1,12 +1,455 @@
-<!DOCTYPE html><html><head><meta http-equiv=X-UA-Compatible content="IE=edge">
-  <meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-  <meta name=google-site-verification content=BcpjrOFj0gwXXphKfh7G0xbxag8P9NLp_RpuVPNBZZc>
-  <link href=https://web.bewe.co/static/css/app.cecaa6c3eb8611d9dedba00f73d250e3.css rel=stylesheet>
-</head>
+{% extends "base.html" %}
+
+{% block section %}
+
 <body>
-  <div id=app></div>
-   <!--<script src=https://web.bewe.co/widget/bewidget.js></script>-->
-  <script type=text/javascript src=https://web.bewe.co/static/js/manifest.ec13327cd4c277535d88.js></script>
-  <script type=text/javascript src=https://web.bewe.co/static/js/vendor.281f9f44e2726246921d.js></script>
- <script type=text/javascript src=https://web.bewe.co/static/js/app.de48b2932faf0f66b9e8.js></script>
-</body></html>
+  
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="bd-placeholder-img" src="{{ url_for('static', filename='img/Welcome.gif')}}"width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+        <div class="container">
+          <div class="carousel-caption text-start">
+            
+            <h1>Valverde</h1>
+            <p>...</p>
+            <p><a class="btn btn-lg btn-primary" href="#">ir</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="bd-placeholder-img" src="{{ url_for('static', filename='img/github-cover.jpg')}}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+        <div class="container">          
+          <div class="carousel-caption">
+           
+            <h1>Respaldo.</h1>
+            <p>mas.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">mas</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="bd-placeholder-img" src="{{ url_for('static', filename='img/2.png')}}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>New</h1>
+            <p>Therapy.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">mas</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">hola</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">mas</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" img src="{{ url_for('static', filename='img/java.jpg')}}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
+        <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/java.jpg')}}" width="140" height="140">
+        <h2 class="fw-normal">Dr</h2>
+        
+        <p>Médico General y Cirujano Plástico internacional.</p>
+        <p><a class="btn btn-secondary" href="{{ url_for('pjava') }}">más</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/swe.jpg')}}" width="140" height="140"> 
+
+        <h2 class="fw-normal">Psicóloga</h2>
+        <p>Psicóloga clínica especialista en Infanto-juvenil.</p>
+        <p><a class="btn btn-secondary" href="{{ url_for('pswe') }}">Más</a></p>
+      </div><!-- /.col-lg-4 --> 
+
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/josu.jpg')}}" width="140" height="140"> 
+  
+        <h2 class="fw-normal">Fisioterapeuta</h2>
+        <p>Josué</p>
+        <p><a class="btn btn-secondary" href="{{ url_for('pjosu') }}">Más</a></p>
+      </div><!-- /.col-lg-4 -->
+
+      <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" img src="{{ url_for('static', filename='img/java.jpg')}}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
+            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/java.jpg')}}" width="140" height="140">
+            <h2 class="fw-normal">Dr</h2>
+            
+            <p>Médico General y Cirujano Plástico internacional.</p>
+            <p><a class="btn btn-secondary" href="{{ url_for('pjava') }}">más</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/swe.jpg')}}" width="140" height="140"> 
+    
+            <h2 class="fw-normal">Psicóloga</h2>
+            <p>Psicóloga clínica especialista en Infanto-juvenil.</p>
+            <p><a class="btn btn-secondary" href="{{ url_for('pswe') }}">Más</a></p>
+          </div><!-- /.col-lg-4 --> 
+    
+          <div class="col-lg-4">
+            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/josu.jpg')}}" width="140" height="140"> 
+      
+            <h2 class="fw-normal">Fisioterapeuta</h2>
+            <p>Josué</p>
+            <p><a class="btn btn-secondary" href="{{ url_for('pjosu') }}">Más</a></p>
+          </div><!-- /.col-lg-4 -->
+    
+          <hr class="featurette-divider">
+
+
+
+
+   <h1>prueba</h1>
+   <div class="<div class="container-fluid">
+    <div class="container">
+      <div class ="row">
+      
+      <div class="col-8">
+      {% block columna8 %}  
+      <table class="table table-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+           
+            <th>Pais</th>
+            
+            
+            <th>Servicio</th>
+            <th>valor</th>     
+            <th>foto</th>  
+            <th>profesión</th>
+            <th>Acciones</th>
+            
+          </tr>      
+        </thead>
+        <tbody>
+          {% for item in data %}
+            <tr>
+              <td>{{item.usu_name}}</td>
+              <td>{{item.usu_lastname}}</td>
+             
+              <td>{{item.usu_country}}</td>
+              
+                    
+              <td>{{item.usu_concept}}</td>
+              <td>{{item.usu_quantity}}US</td>
+              <td>{{item.usu_foto}}</td>        
+              <td>{{item.usu_profession}}</td>
+              <td>
+                <a href="/update/{{item.usu_id}}">
+                  <span class="material-symbols-outlined">
+                      edit
+                  </span>
+                </a>
+                <a href="/delete/{{item.usu_id}}">
+                  <span class="material-symbols-outlined">
+                      delete
+                  </span>
+                </a>
+      
+              </td>
+             
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endblock %}
+      </div>
+      <div class="col-4">
+        {% block columna4 %}
+
+            <div class="container">
+        
+              <h2><a href="{{ url_for('registro') }}"><span class="material-symbols-outlined">
+                  undo
+                  </span></a><strong>Registrar</strong></h2>
+                  
+            </div>
+          
+          <form action="/new" method="POST">
+              {{dataForm.csrf_token}}
+              <div class="mb-3">
+          <!--Formulario de información-->
+              {{dataForm.usu_name.label(class="form-label")}}
+              {{dataForm.usu_name(class="form-control")}}
+              {% if dataForm.usu_name.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_name.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}{{dataForm.usu_date.label}}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_lastname.label(class="form-label")}}
+              {{dataForm.usu_lastname(class="form-control")}}
+              {% if dataForm.usu_lastname.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_lastname.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>    
+          
+              <div class="mb-3">
+              {{dataForm.usu_email.label(class="form-label")}}
+              {{dataForm.usu_email(class="form-control")}}
+              {% if dataForm.usu_email.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_email.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_phone.label(class="form-label")}}
+              {{dataForm.usu_phone(class="form-control")}}
+              {% if dataForm.usu_phone.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_phone.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_country.label(class="form-label")}}
+              {{dataForm.usu_country(class="form-control")}}
+              {% if dataForm.usu_country.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_country.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_city.label(class="form-label")}}
+              {{dataForm.usu_city(class="form-control")}}
+              {% if dataForm.usu_city.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_city.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_birthd.label(class="form-label")}}
+              {{dataForm.usu_birthd(class="form-control")}}
+              {% if dataForm.usu_birthd.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_birthd.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              <label for="usu_sex">sexo: </label>
+              <!--{{dataForm.usu_sex.label(class="form-label")}}-->
+                  <select class="form-control" name="usu_sex" id="usu_sex">
+                      <option value="masculino">Masculino</option>
+                      <option value="femenino">Femenino</option>
+                  </select>
+              <!--{{dataForm.usu_sex(class="form-control")}}-->
+              {% if dataForm.usu_sex.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_sex.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+            
+              <div class="mb-3">
+              {{dataForm.usu_date.label(class="form-label")}}
+              {{dataForm.usu_date(class="form-control")}}
+              {% if dataForm.usu_date.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_date.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_user.label(class="form-label")}}
+              {{dataForm.usu_user(class="form-control")}}
+              {% if dataForm.usu_user.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_user.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_pass.label(class="form-label")}}
+              <!--{{dataForm.usu_pass(class="form-control")}}-->
+              <input class="form-control" type="password" name="usu_pass" placeholder="Contraseña" required><br>
+              
+              <!--<input class="form-control" type="password" name="confirm_usu_pass" placeholder="Confirmar Contraseña" required><br>-->
+              {% if dataForm.usu_pass.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_pass.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+            
+          
+              <div class="mb-3">
+              {{dataForm.usu_concept.label(class="form-label")}}
+              {{dataForm.usu_concept(class="form-control")}}
+              {% if dataForm.usu_concept.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_concept.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_quantity.label(class="form-label")}}
+              {{dataForm.usu_quantity(class="form-control")}}
+              {% if dataForm.usu_quantity.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_quantity.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          <!--foto-->
+              <div class="mb-3">
+                    <!--
+              <input type="file" name="txtFoto" id="txtFoto">
+              <br>
+              <br>
+              <input type="sibmit" value="Agregar">--> 
+            
+              {{dataForm.usu_foto.label(class="form-label")}}
+              {{dataForm.usu_foto(class="form-control")}}
+              {% if dataForm.usu_foto.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.usu_foto.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+              <div class="mb-3">
+              {{dataForm.usu_profession.label(class="form-label")}}
+              {{dataForm.usu_profession(class="form-control")}}
+              {% if dataForm.usu_profession.errors %}
+                  <ul class="errors">
+                  {% for error in dataForm.profession.errors %}
+                      <li class="form-text">{{ error }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+              </div>
+          
+          
+              {{dataForm.submit}}
+          </form>
+      
+        {% endblock %}
+
+
+       </div>
+      </div>
+     </div>
+    </div>"
+ 
+   
+ 
+<h1>prueba</h1>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Mas. <span class="text-muted">otros. </span></h2>
+        <p class="lead">mas.</p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+  
+      </div>
+    </div>
+  
+    <hr class="featurette-divider">
+  
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">otros. <span class="text-muted"> mas. </span></h2>
+        <p class="lead">mas.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+  
+      </div>
+    </div>
+  
+    <hr class="featurette-divider">
+  
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">otros. <span class="text-muted"> mas. </span></h2>
+        <p class="lead">mas.</p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+  
+      </div>
+    </div>
+  
+    <hr class="featurette-divider">
+  
+   
+          
+{% endblock %}
+
+

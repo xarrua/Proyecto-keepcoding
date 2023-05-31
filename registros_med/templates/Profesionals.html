@@ -90,7 +90,111 @@
         <p>Josué</p>
         <p><a class="btn btn-secondary" href="{{ url_for('pjosu') }}">Más</a></p>
       </div><!-- /.col-lg-4 -->
+
+      <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" img src="{{ url_for('static', filename='img/java.jpg')}}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
+            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/java.jpg')}}" width="140" height="140">
+            <h2 class="fw-normal">Dr</h2>
+            
+            <p>Médico General y Cirujano Plástico internacional.</p>
+            <p><a class="btn btn-secondary" href="{{ url_for('pjava') }}">más</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/swe.jpg')}}" width="140" height="140"> 
+    
+            <h2 class="fw-normal">Psicóloga</h2>
+            <p>Psicóloga clínica especialista en Infanto-juvenil.</p>
+            <p><a class="btn btn-secondary" href="{{ url_for('pswe') }}">Más</a></p>
+          </div><!-- /.col-lg-4 --> 
+    
+          <div class="col-lg-4">
+            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/josu.jpg')}}" width="140" height="140"> 
+      
+            <h2 class="fw-normal">Fisioterapeuta</h2>
+            <p>Josué</p>
+            <p><a class="btn btn-secondary" href="{{ url_for('pjosu') }}">Más</a></p>
+          </div><!-- /.col-lg-4 -->
+    
+          <hr class="featurette-divider">
+
+
+
+
    <h1>prueba</h1>
+   <div class="<div class="container-fluid">
+    <div class="container">
+      <div class ="row">
+      
+      <div class="col-8">
+      {% block columna8 %}  
+      <table class="table table-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+           
+            <th>Pais</th>
+            
+            
+            <th>Servicio</th>
+            <th>valor</th>     
+            <th>foto</th>  
+            <th>profesión</th>
+            <th>Acciones</th>
+            
+          </tr>      
+        </thead>
+        <tbody>
+          {% for item in data %}
+            <tr>
+              <td>{{item.usu_name}}</td>
+              <td>{{item.usu_lastname}}</td>
+             
+              <td>{{item.usu_country}}</td>
+              
+                    
+              <td>{{item.usu_concept}}</td>
+              <td>{{item.usu_quantity}}US</td>
+              <td>{{item.usu_foto}}</td>        
+              <td>{{item.usu_profession}}</td>
+              <td>
+                <a href="/update/{{item.usu_id}}">
+                  <span class="material-symbols-outlined">
+                      edit
+                  </span>
+                </a>
+                <a href="/delete/{{item.usu_id}}">
+                  <span class="material-symbols-outlined">
+                      delete
+                  </span>
+                </a>
+      
+              </td>
+             
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endblock %}
+      </div>
+      <div class="col-4">
+        {% block columna4 %}
+
+        {% endblock %}
+
+
+       </div>
+      </div>
+     </div>
+    </div>"
+ 
+   
+ 
+<h1>prueba</h1>
 
     <hr class="featurette-divider">
 
