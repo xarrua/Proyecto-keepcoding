@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import date, datetime
 from registros_med.models import *
 from registros_med.forms import RegistrosForm
+import os
+
 
 def validateForm(datosFormulario):
     errores=[]#crear lista para guardar errores
@@ -48,6 +50,24 @@ app.secret_key = 'mysecretkey'
 
 
 # Ruta de registro
+@app.route('/test_upload', methods=['POST'])
+def test_upload():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        foto = request.files['foto']
+        proyecto = app.root_path
+        now=datetime.now()
+        tiempo=now.strftime("%Y%m%d%H%M%S")
+        rename = tiempo + "-" + foto.filename
+
+        #si viene foto entonces guardar en carpeta del sistema
+        if foto: 
+            ruta_imagen = os.path.join(proyecto,"upload", rename)
+            foto.save(ruta_imagen)
+
+
+    return tiempo
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -141,6 +161,7 @@ def create():
                     form.usu_foto.data,
                     form.usu_profession.data ])
             
+            
             flash("Movimiento registrado correactamente!!!")
             return redirect('/registro')  
         else:
@@ -170,11 +191,11 @@ def update(id):
         form.usu_phone.data = resultado[4]
         form.usu_country.data = resultado[5]
         form.usu_city.data = resultado[6]
-        form.usu_birthd.data = resultado[7] # datetime.strptime(resultado[7],"%Y-%m-%d")
+        form.usu_birthd.data = datetime.strptime(resultado[7],"%Y-%m-%d")
         form.usu_sex.data = resultado[8]
         form.usu_user.data = resultado[10]
         form.usu_pass.data = resultado[11]
-        form.usu_date.data = resultado[9] #datetime.strptime(resultado[9],"%Y-%m-%d")
+        form.usu_date.data = datetime.strptime(resultado[9],"%Y-%m-%d")
         form.usu_concept.data = resultado[12]
         form.usu_quantity.data = resultado[13]
         form.usu_foto.data = resultado[14]
@@ -280,7 +301,9 @@ def payment():
 
 @app.route('/profesionals')
 def home():
-    return render_template("profesionals.html", title="profesionals")
+    registros = select_all()
+
+    return render_template("profesionals.html", data = registros, title="profesionals")
 
 @app.route('/psico')
 def psico():
