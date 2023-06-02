@@ -11,8 +11,6 @@ CREATE TABLE "usuarios" (
   "usu_date" TEXT NOT NULL,
   "usu_user" TEXT NOT NULL,
   "usu_pass" TEXT NOT NULL,
-  "usu_concept" TEXT,
-  "usu_quantity" REAL NOT NULL,
   "usu_foto" TEXT,
   "usu_profession" TEXT,
   "id_sex" INTEGER,

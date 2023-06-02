@@ -16,10 +16,10 @@
       <header class="blog-header lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <a class="link-secondary" href="{{ url_for('about') }}">About</a>
+            <a class="link-secondary" href="{{ url_for('create') }}">Registrar</a>
           </div>
           <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="{{ url_for('index') }}">Home</a>
+            <a class="blog-header-logo text-dark" href="{{ url_for('home') }}">Home</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="link-secondary" href="{{ url_for('josu') }}" aria-label="XaRrUa">
@@ -36,9 +36,9 @@
           <a class="p-2 link-secondary" href="{{ url_for('pruebas') }}">pruebas</a>
           <a class="p-2 link-secondary" href="{{ url_for('registro') }}">usuarios</a>
           <a class="p-2 link-secondary" href="{{ url_for('home') }}">profesionales</a>
-          <a class="p-2 link-secondary" href="{{ url_for('psico') }}">psico</a>
+          <a class="p-2 link-secondary" href="{{ url_for('contenido') }}">log</a>
           <a class="p-2 link-secondary" href="{{ url_for('prof') }}">Cuentas Web</a>
-          <a class="p-2 link-secondary" href="{{ url_for('register') }}">foto</a>
+          <a class="p-2 link-secondary" href="#">foto</a>
    
         </nav>
       </div>
@@ -61,7 +61,7 @@
               <h3 class="mb-0">Médico Cirujano</h3>
               <div class="mb-1 text-muted">Mayo 12</div>
               <p class="card-text mb-auto">Con más de 35 años de experiencia internacional en médicina general y cirugía plástiva.</p>
-              <a href="{{ url_for('java') }}" class="stretched-link">Más</a>
+              <a href="https://xarrua.github.io/templates/java.html" class="stretched-link">Más</a>
             </div>
             <div class="col-auto d-none d-lg-block">
               <img class="bd-placeholder-img" src="{{ url_for('static', filename='img/java.jpg')}}" width="200" height="250">
@@ -195,8 +195,7 @@
 
             <div class="p-4">
               <h4 class="fst-italic">Proyectos</h4>
-              <ol class="list-unstyled mb-0">
-                <li><a href="{{ url_for('registro') }}">م2023 Registro de Contacto</a></li>
+              <ol class="list-unstyled mb-0">               
                 <li><a href="{{ url_for('registro') }}">2022, App-Tabla</a></li>
                 <li><a href="#">2022</a></li>
                 <li><a href="#">2022</a></li>

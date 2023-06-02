@@ -18,7 +18,7 @@
         <div class="container">
           <div class="carousel-caption text-start">
             
-            <h1>Valverde</h1>
+            <h1>KeepCoding</h1>
             <p>...</p>
             <p><a class="btn btn-lg btn-primary" href="#">ir</a></p>
           </div>
@@ -30,7 +30,7 @@
         <div class="container">          
           <div class="carousel-caption">
            
-            <h1>Respaldo.</h1>
+            <h1>More</h1>
             <p>mas.</p>
             <p><a class="btn btn-lg btn-primary" href="#">mas</a></p>
           </div>
@@ -70,15 +70,15 @@
       <div class="col-lg-4">
         <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" img src="{{ url_for('static', filename='img/java.jpg')}}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
         <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/java.jpg')}}" width="140" height="140">
-        <h2 class="fw-normal">Dr</h2>
+        <h2 class="fw-normal">Director Médico</h2>
         
         <p>Médico General y Cirujano Plástico internacional.</p>
-        <p><a class="btn btn-secondary" href="{{ url_for('pjava') }}">más</a></p>
+        <p><a class="btn btn-secondary" href="https://xarrua.github.io/templates/java.html">más</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/swe.jpg')}}" width="140" height="140"> 
 
-        <h2 class="fw-normal">Psicóloga</h2>
+        <h2 class="fw-normal">RRHH</h2>
         <p>Psicóloga clínica especialista en Infanto-juvenil.</p>
         <p><a class="btn btn-secondary" href="{{ url_for('pswe') }}">Más</a></p>
       </div><!-- /.col-lg-4 --> 
@@ -86,65 +86,44 @@
       <div class="col-lg-4">
         <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/josu.jpg')}}" width="140" height="140"> 
   
-        <h2 class="fw-normal">Fisioterapeuta</h2>
-        <p>Josué</p>
-        <p><a class="btn btn-secondary" href="{{ url_for('pjosu') }}">Más</a></p>
+        <h2 class="fw-normal">CEO</h2>
+        <p>Josué Valverde</p>
+        <p><a class="btn btn-secondary" href="https://xarrua.github.io/templates/josu.html">Más</a></p>
       </div><!-- /.col-lg-4 -->
 
-      <div class="container marketing">
-
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-4">
-            <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" img src="{{ url_for('static', filename='img/java.jpg')}}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
-            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/java.jpg')}}" width="140" height="140">
-            <h2 class="fw-normal">Dr</h2>
-            
-            <p>Médico General y Cirujano Plástico internacional.</p>
-            <p><a class="btn btn-secondary" href="{{ url_for('pjava') }}">más</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/swe.jpg')}}" width="140" height="140"> 
-    
-            <h2 class="fw-normal">Psicóloga</h2>
-            <p>Psicóloga clínica especialista en Infanto-juvenil.</p>
-            <p><a class="btn btn-secondary" href="{{ url_for('pswe') }}">Más</a></p>
-          </div><!-- /.col-lg-4 --> 
-    
-          <div class="col-lg-4">
-            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/josu.jpg')}}" width="140" height="140"> 
-      
-            <h2 class="fw-normal">Fisioterapeuta</h2>
-            <p>Josué</p>
-            <p><a class="btn btn-secondary" href="{{ url_for('pjosu') }}">Más</a></p>
-          </div><!-- /.col-lg-4 -->
+      <h1>Perfiles Profesionales</h1>
     
           <hr class="featurette-divider">
 
-
-
-
-   <h1>prueba</h1>
+          {% for item in data %}
+          <div class="col-lg-4">
+            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='upload/'+ item.usu_foto)}}" width="140" height="140"> 
+      
+            <h2 class="fw-normal">{{item.usu_name}}</h2>
+            <p>{{item.usu_profession}}</p>
+            <p><a class="btn btn-secondary" href="{{perfil}}">{{item.usu_country}}</a></p>
+          </div><!-- /.col-lg-4 -->
+          {% endfor %}
+   <h1></h1>
    <div class="<div class="container-fluid">
     <div class="container">
       <div class ="row">
       
       <div class="col-8">
       {% block columna8 %}  
+
+      
+      <hr class="featurette-divider">
+      <h1>Profesionales</h1>
+    
       <table class="table table-sm">
         <thead class="table-dark">
           <tr>
             <th>Nombre</th>
-            <th>Apellido</th>
+            <th>Apellido</th>           
+            <th>Pais</th>          
            
-            <th>Pais</th>
-            
-            
-            <th>Servicio</th>
-            <th>valor</th>     
-            <th>foto</th>  
-            <th>profesión</th>
-            <th>Acciones</th>
+            <th>Profesión</th>       
             
           </tr>      
         </thead>
@@ -152,28 +131,11 @@
           {% for item in data %}
             <tr>
               <td>{{item.usu_name}}</td>
-              <td>{{item.usu_lastname}}</td>
-             
-              <td>{{item.usu_country}}</td>
-              
+              <td>{{item.usu_lastname}}</td>             
+              <td>{{item.usu_country}}</td>           
                     
-              <td>{{item.usu_concept}}</td>
-              <td>{{item.usu_quantity}}US</td>
-              <td>{{item.usu_foto}}</td>        
-              <td>{{item.usu_profession}}</td>
-              <td>
-                <a href="/update/{{item.usu_id}}">
-                  <span class="material-symbols-outlined">
-                      edit
-                  </span>
-                </a>
-                <a href="/delete/{{item.usu_id}}">
-                  <span class="material-symbols-outlined">
-                      delete
-                  </span>
-                </a>
-      
-              </td>
+           
+              <td>{{item.usu_profession}}</td>          
              
             </tr>
           {% endfor %}
@@ -183,7 +145,10 @@
       </div>
       <div class="col-4">
         {% block columna4 %}
-
+        <hr class="featurette-divider">
+          <h1>Editar perfil:</h1>
+          <p>Se agregaran servicios e información para atención a pacientes junto con edicion del perfil profesional.</p>
+          <a href="{{ url_for('ejemplo') }}">Aquí</a>
         {% endblock %}
 
 
@@ -193,50 +158,9 @@
     </div>"
  
    
- 
-<h1>prueba</h1>
 
-    <hr class="featurette-divider">
 
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">Mas. <span class="text-muted">otros. </span></h2>
-        <p class="lead">mas.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-  
-      </div>
-    </div>
-  
-    <hr class="featurette-divider">
-  
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">otros. <span class="text-muted"> mas. </span></h2>
-        <p class="lead">mas.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-  
-      </div>
-    </div>
-  
-    <hr class="featurette-divider">
-  
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">otros. <span class="text-muted"> mas. </span></h2>
-        <p class="lead">mas.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-  
-      </div>
-    </div>
-  
-    <hr class="featurette-divider">
-  
+   
    
           
 {% endblock %}

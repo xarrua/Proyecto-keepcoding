@@ -19,7 +19,7 @@
             <a class="link-secondary" href="{{ url_for('josu') }}">About</a>
           </div>
           <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="{{ url_for('index') }}">Home</a>
+            <a class="blog-header-logo text-dark" href="{{ url_for('home') }}">Home</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="link-secondary" href="#" aria-label="بحث">
@@ -109,7 +109,7 @@
           <h5 class="card-title">Consulta Medica</h5>
           <img src="{{ url_for('static', filename='img/steto.png')}}" height="60" width="60">
           <p class="card-text">Precencial en alguno de los centro de atencion</p>
-          <a href="{{ url_for('registro') }}" class="btn btn-primary">15 US</a>
+          <a href="{{ url_for('payment') }}" class="btn btn-primary">15 US</a>
         </div>
       </div>
       <div class="card text-center mb-3" style="width: 18rem;">
@@ -118,33 +118,62 @@
           <img src="{{ url_for('static', filename='img/notebook.png')}}" alt="pc" height="60px" width="80px">
          
           <p class="card-text">Difernetes medios, incluye receta, licencias y certificados digitales.</p>
-          <a href="{{ url_for('java') }}" class="btn btn-primary">10 U$S</a>
+          <a href="{{ url_for('payment') }}" class="btn btn-primary">10 U$S</a>
         </div>
       </div>
   
 
-      <h2>Horarios: </h2>
-      <p><strong>Domingo: </strong>11:00-12:00 hrs</p>
-      <p><strong>Lunes:    </strong>    9:00-20:00 hrs</p>
-      <p><strong>Martes: </strong>9:00-20:00 hrs</p>
-      <p><strong>Miercoes: </strong>9:00-20:00 hrs</p>
-      <p><strong>Jueves: </strong>9:00-20:00 hrs</p>
-      <p><strong>Viernes:</strong>9:00-20:00 hrs</p>
-      <p><strong>Sábado: </strong>cerrado</p>
-      <p>HORARIO DE ATENCIÓN
-        Lunes:	09:00 - 14:00 / 15:00 - 19:00
-        Martes:	09:00 - 14:00 / 15:00 - 19:00
-        Miércoles:	09:00 - 14:00 / 15:00 - 20:30
-        Jueves:	09:00 - 14:00 / 15:00 - 20:30
-        Viernes:	09:00 - 20:30
-        Sábado:	09:00 - 17:00
-        Domingo:	Cerrado
-        </p>
+    
   
-      <h2>Lugares</h2>
-      <p>Clínica:</p>
-  
-      
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading fw-normal lh-1">Horarios <span class="text-muted"> </span></h2>
+          <p class="lead">
+           
+            <p><strong>Domingo: </strong>11:00-12:00 hrs</p>
+            <p><strong>Lunes:    </strong>    9:00-20:00 hrs</p>
+            <p><strong>Martes: </strong>9:00-20:00 hrs</p>
+            <p><strong>Miercoes: </strong>9:00-20:00 hrs</p>
+            <p><strong>Jueves: </strong>9:00-20:00 hrs</p>
+            <p><strong>Viernes:</strong>9:00-20:00 hrs</p>
+            <p><strong>Sábado: </strong>cerrado</p></p>
+        </div>
+        <div class="col-md-5">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Mapa" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Mapa</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">Google Map</text></svg>
+    
+        </div>
+      </div>
+    
+      <hr class="featurette-divider">
+    
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading fw-normal lh-1">otros. <span class="text-muted"> mas. </span></h2>
+          <p class="lead">mas.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+    
+        </div>
+      </div>
+    
+      <hr class="featurette-divider">
+    
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading fw-normal lh-1">otros. <span class="text-muted"> mas. </span></h2>
+          <p class="lead">mas.</p>
+        </div>
+        <div class="col-md-5">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+    
+        </div>
+      </div>
+    
+      <hr class="featurette-divider">
+    
   
      </div>
 

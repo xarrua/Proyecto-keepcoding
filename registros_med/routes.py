@@ -1,11 +1,17 @@
 from registros_med import app
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from datetime import date, datetime
 from registros_med.models import *
 from registros_med.forms import RegistrosForm
 import os
+from notifypy import Notify
+from flask_wtf.csrf import CSRFProtect
+from flask_login import LoginManager, login_user, logout_user, login_required
+import sqlite3
 
 
+
+ 
 def validateForm(datosFormulario):
     errores=[]#crear lista para guardar errores
     hoy = date.today().isoformat()#capturo la fecha de hoy
@@ -39,10 +45,30 @@ def validateForm(datosFormulario):
 #Home e Index
 @app.route('/')
 def index():    
-    return render_template("index.html", title=home)
+    return render_template("index.html")
 
 #login
+@app.route('/layoyt', methods = ['GET', 'POST'])
+def layout():
+    session.clear()
+    return render_template("login/contenido")
 
+
+
+
+@app.route('/contenido')
+def contenido():
+    return render_template('login/contenido.html')
+
+@app.route('/prem')
+def prem():
+       return render_template("/loginpremium/home.html")
+
+
+@app.route('/standar')
+def standar():
+    
+       return render_template("login/estandar/homeTwo.html")
 
 
 app.secret_key = 'mysecretkey'
@@ -62,76 +88,47 @@ def test_upload():
 
         #si viene foto entonces guardar en carpeta del sistema
         if foto: 
-            ruta_imagen = os.path.join(proyecto,"upload", rename)
+            ruta_imagen = os.path.join(proyecto,"static/upload", rename)
             foto.save(ruta_imagen)
 
 
-    return tiempo
+   
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        # Obtener los datos del formulario
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        email = request.form['email']
-        telefono = request.form['telefono']
-        password = request.form['password']
-        confirm_password = request.form['confirm_password']
-        
-        # Verificar que los campos no estén vacíos
-        if nombre and apellido and email and telefono and password and confirm_password:
-            # Verificar la longitud mínima de la contraseña
-            if len(password) >= 6:
-                # Verificar si las contraseñas coinciden
-                if password == confirm_password:
-                    # Aquí puedes realizar el proceso de registro del usuario
-                    # por ejemplo, guardar los datos en una base de datos
-                    
-                    # Redireccionar a la página de inicio de sesión
-                    return redirect('/login')
-                else:
-                    error = 'Las contraseñas no coinciden'
-            else:
-                error = 'La contraseña debe tener al menos 6 caracteres'
-        else:
-            error = 'Por favor, completa todos los campos'
-            
-        return render_template('register.html', error=error)
-    else:
-        return render_template('register.html')
 
 # Ruta de inicio de sesión
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+   
+
+    conn = sqlite3.connect('data/registros.sqlite')
     if request.method == 'POST':
-        # Obtener los datos del formulario
-        
-        print(request.form['username'])
-        print(request.form['password'])
-        return render_template("login.html")
-    
-        
-        # Aquí puedes realizar el proceso de inicio de sesión
-        # por ejemplo, verificar las credenciales en una base de datos
-        
-        # Redireccionar a la página de bienvenida
-        #return redirect('/welcome')
+        # obtener los datos del formulario
+        username = request.form['username']
+        password = request.form['password']
+       
+        # verificar las credenciales en la base de datos      
+        selectUsuario = Conexion('SELECT * FROM usuarios WHERE usu_user = ? AND usu_pass = ? ', (username, password))
+        usuario = selectUsuario.res.fetchone()
+        selectUsuario.con.close()
+
+
+        if usuario is not None:
+            # credenciales válidas, redireccionar
+            return redirect('/profesionals')
+        else:
+            # credenciales inválidas
+            error = "Credenciales inválidas"
+            return render_template('login.html', error=error)
+
     else:
         return render_template('login.html')
-
-# Ruta de bienvenida
-@app.route('/welcome')
-def welcome():
-    return render_template('registro.html')
 
 #base de datos
 
 @app.route('/registro')
 def registro():
     registros = select_all()
-    return render_template("registro.html", data = registros,ingreso=select_ingreso(),egreso= select_egreso())
-
+    return render_template("registro.html", data = registros)
 
 
 
@@ -141,11 +138,40 @@ def create():
     form = RegistrosForm()
 
     if request.method == "GET":
-        return render_template("create.html",dataForm=form)
+        return render_template("create.html", dataForm=form)
     else:
        
-        if form.validate_on_submit():
-            insert([form.usu_name.data,
+        #if request.validate_on_submit():
+            if request.method == 'POST':
+                name = request.form['name']
+                lastname = request.form['lastname']
+                email = request.form['email']
+                phone = request.form['phone']
+                country = request.form['country']
+                city = request.form['city']
+                birthday = request.form['birthday']
+                sex = request.form['sex']
+                date = request.form['date']
+                user = request.form['user']
+                password = request.form['password']
+                profession = request.form['profession']   
+                foto = "holas"           
+               # foto = request.files['foto']
+               # proyecto = app.root_path
+               # now=datetime.now()
+               # tiempo=now.strftime("%Y%m%d%H%M%S")
+               # rename = tiempo + "-" + foto.filename
+                
+                #si viene foto entonces guardar en carpeta del sistema
+              #  if foto: 
+               #     ruta_imagen = os.path.join(proyecto,"static/upload", rename)
+               #     foto.save(ruta_imagen)
+
+            conectarInsert = Conexion("insert into usuarios(usu_name,usu_lastname,usu_email,usu_phone,usu_country,usu_city,usu_birthd,usu_sex,usu_date,usu_user,usu_pass,usu_foto,usu_profession) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",(name, lastname, email, phone, country, city, birthday, sex, date, user, password, foto, profession))
+            conectarInsert.con.commit()#funcion para validar el registro
+            conectarInsert.con.close()
+
+            """ insert([form.usu_name.data,
                     form.usu_lastname.data,
                     form.usu_email.data,
                     form.usu_phone.data,
@@ -159,13 +185,12 @@ def create():
                     form.usu_concept.data,
                     form.usu_quantity.data,
                     form.usu_foto.data,
-                    form.usu_profession.data ])
-            
+                    form.usu_profession.data ])"""
             
             flash("Movimiento registrado correactamente!!!")
             return redirect('/registro')  
-        else:
-            return render_template("create.html",dataForm=form)
+      #  else:
+         #   return render_template("create.html",dataForm=form)
 
 @app.route("/delete/<int:id>",methods=["GET","POST"])
 def remove(id):
@@ -195,11 +220,9 @@ def update(id):
         form.usu_sex.data = resultado[8]
         form.usu_user.data = resultado[10]
         form.usu_pass.data = resultado[11]
-        form.usu_date.data = datetime.strptime(resultado[9],"%Y-%m-%d")
-        form.usu_concept.data = resultado[12]
-        form.usu_quantity.data = resultado[13]
-        form.usu_foto.data = resultado[14]
-        form.usu_profession.data = resultado[15]
+        form.usu_date.data = datetime.strptime(resultado[9],"%Y-%m-%d")     
+        form.usu_foto.data = resultado[12]
+        form.usu_profession.data = resultado[13]
 
         return render_template("update.html",dataForm = form, idform = id)
     else:
@@ -216,9 +239,8 @@ def update(id):
                     form.usu_sex.data,
                     form.usu_date.data.isoformat(),
                     form.usu_user.data,
-                    form.usu_pass.data,                
-                    form.usu_concept.data,
-                    form.usu_quantity.data,
+                    form.usu_pass.data,          
+                
                     form.usu_foto.data,
                     form.usu_profession.data ])
             flash("Movimiento actualizado correactamente!!!")
@@ -297,7 +319,9 @@ def payment():
     return render_template('payment/form.html', title="checkout")
 
 # otros
-
+@app.route('/ejemplo')
+def ejemplo():
+    return render_template('ejemplo.html')
 
 @app.route('/profesionals')
 def home():
@@ -305,9 +329,6 @@ def home():
 
     return render_template("profesionals.html", data = registros, title="profesionals")
 
-@app.route('/psico')
-def psico():
-    return render_template('psico.html', title=psico)
 
 @app.route("/about")
 def about():
@@ -319,7 +340,7 @@ def pruebas():
     form = RegistrosForm()
 
     if request.method == "GET":
-        return render_template("pruebas.html",dataForm=form)
+        return render_template("profesionals.html",dataForm=form)
     else:
        
         if form.validate_on_submit():
@@ -343,33 +364,8 @@ def pruebas():
             flash("Movimiento registrado correactamente!!!")
             return redirect('/pruebas')  
         else:
-            return render_template("pruebas.html",dataForm=form, data = registros, title="profesionals")
+            return render_template("profesionals.html",dataForm=form, data = registros, title="profesionals")
 
       
 
 
-
-
-#@app.route('/')
-#def index():
-   # return redirect(url_for('login'))
-
-#@app.route("/login", methods=['GET', 'POST'])
-#def login():
-   # if request.method =='POST':
-   #     print(request.form['username'])
-   #     print(request.form['password'])
-  #  else:
-   #     return render_template("login")
-    
-
-
-
-
-#@app.route("/delete")
-#def delete():
-  #  return render_template("delete.html")
-
-#@app.route("/update")
-#def update():
-   # return render_template("update.html")

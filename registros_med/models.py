@@ -1,5 +1,7 @@
 from registros_med.conexion import Conexion
 from flask import request
+from datetime import date, datetime
+
 
 def select_all():
     conectar = Conexion("SELECT * from usuarios order by usu_date DESC")
@@ -22,7 +24,7 @@ def select_all():
     return lista_diccionario
 
 def insert(registroForm):
-    conectarInsert = Conexion("insert into usuarios(usu_name,usu_lastname,usu_email,usu_phone,usu_country,usu_city,usu_birthd,usu_sex,usu_date,usu_user,usu_pass,usu_concept,usu_quantity,usu_foto,usu_profession) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",registroForm)
+    conectarInsert = Conexion("insert into usuarios(usu_name,usu_lastname,usu_email,usu_phone,usu_country,usu_city,usu_birthd,usu_sex,usu_date,usu_user,usu_pass,usu_foto,usu_profession) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",registroForm)
     conectarInsert.con.commit()#funcion para validar el registro
     conectarInsert.con.close()
 
@@ -40,10 +42,10 @@ def delete_by(id):
     conectDeleteBy.con.close()
 
 def update_by(id,registro):
-    conectUpdateBy = Conexion(f"UPDATE usuarios SET usu_name=?,usu_lastname=?,usu_email=?,usu_phone=?,usu_country=?,usu_city=?,usu_birthd=?,usu_sex=?,usu_user=?,usu_pass=?,usu_date=?,usu_concept=?,usu_quantity=? WHERE usu_id={id};",registro)
+    conectUpdateBy = Conexion(f"UPDATE usuarios SET usu_name=?,usu_lastname=?,usu_email=?,usu_phone=?,usu_country=?,usu_city=?,usu_birthd=?,usu_sex=?,usu_user=?,usu_pass=?,usu_date=?, WHERE usu_id={id};",registro)
     conectUpdateBy.con.commit()
     conectUpdateBy.con.close()
-
+"""
 def select_ingreso():
     conectIngreso = Conexion("SELECT sum(usu_quantity) from usuarios WHERE usu_quantity > 0")
     resultadoIngreso = conectIngreso.res.fetchall()
@@ -57,6 +59,7 @@ def select_egreso():
     conectEgreso.con.close()
 
     return resultadoEgreso[0][0]
+
 
 def ComprobacionPassword2():
     pass
@@ -77,3 +80,4 @@ def perfilWeb():
     conectSelectBy.con.close()
     
     return resultado[0]
+    """

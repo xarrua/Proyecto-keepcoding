@@ -7,7 +7,7 @@
        
   
 
-<form action="/update/{{usu_idform}}" method="POST">
+<form action="/update/{{usu_idform}}" method="POST" enctype="multipart/form-data">
     {{dataForm.csrf_token}}
 
     <div class="mb-3">
@@ -150,35 +150,12 @@
     </div>
 
 
-    <div class="mb-3">
-    {{dataForm.usu_concept.label(class="form-label")}}
-    {{dataForm.usu_concept(class="form-control")}}
-    {% if dataForm.usu_concept.errors %}
-        <ul class="errors">
-        {% for error in dataForm.usu_concept.errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
-
-    <div class="mb-3">    
-    {{dataForm.usu_quantity.label(class="form-label")}}
-    {{dataForm.usu_quantity(class="form-control")}}
-    {% if dataForm.usu_quantity.errors %}
-        <ul class="errors">
-        {% for error in dataForm.usu_quantity.errors %}
-            <li class="form-text">{{ error }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
-
+   
 
     <div class="mb-3">    
         {{dataForm.usu_foto.label(class="form-label")}}  
-        <!--{{dataForm.usu_foto(class="form-control")}}--> 
-        <input type="file" name="txtFoto" id="txtFoto">      
+       
+        <input type="file" name="foto" placeholder="adjuntefoto" accept="image/*">      
         {% if dataForm.usu_foto.errors %}
             <ul class="errors">
             {% for error in dataForm.usu_foto.errors %}
@@ -187,8 +164,7 @@
             </ul>
         {% endif %}
         </div>
-
-
+   
 
     <div class="mb-3">
     {{dataForm.usu_profession.label(class="form-label")}}

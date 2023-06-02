@@ -15,8 +15,7 @@ class RegistrosForm(FlaskForm):
     usu_date = DateField('Fecha',validators=[DataRequired( message="La fecha es requerida" )])
     usu_user = StringField('Usuario',validators=[DataRequired( message="El usuario es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
     usu_pass = StringField('Contraseña',validators=[DataRequired( message="La contraseña es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
-    usu_concept = StringField('Concepto',validators=[DataRequired( message="El concepto es requerido" ),Length(min=4,message="Mas de 4 carácteres por favor")])
-    usu_quantity = FloatField('Monto',validators=[DataRequired("El monto es requirido, debe ser mayor a 0")])
+    
     usu_foto = StringField('foto', validators=[DataRequired( message="Imagen no valida, revise formato (jpg o png) y que no sea muy grande")])
     usu_profession = StringField('Profesión', validators=[DataRequired(message="Profesion o actividad es requerida")])
     

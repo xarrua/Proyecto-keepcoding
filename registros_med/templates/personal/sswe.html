@@ -10,20 +10,17 @@
       <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='img/swe.jpg')}}" width="140" height="140"> 
 
       <h2 class="fw-normal">Swelyn Valverde</h2>
-      <p>Psicóloga clínica especialista en Infanto-juvenil.</p>
-    
-    </div><!-- /.col-lg-4 -->
-   
+      <p>Psicóloga clínica especialista en Infanto-juvenil.</p>    
+    </div><!-- /.col-lg-4 -->   
 
-    <div class="align-self-center"><h2>Servicios</h2>
-
+    <div class="align-self-center"><h2>Servicios Web</h2>
  <!-- /END THE FEATURETTES -->
 
     </div><!-- /.container -->
     <div class="card text-center mb-3" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Sesión</h5>
-        <img src="{{ url_for('static', filename='img/home.png')}}" alt="pc" height="80px" width="80px">
+        <img src="{{ url_for('static', filename='img/notebook.png')}}" alt="pc" height="80px" width="80px">
         <p class="card-text">45 min de sesión.</p>
         <a href="{{ url_for('payment') }}" class="btn btn-primary">35-50 US</a>
       </div>
@@ -36,13 +33,7 @@
         <a href="{{ url_for('payment') }}" class="btn btn-primary">140 US</a>
       </div>
     </div>
-    <div class="card text-center mb-3" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Telemedicina</h5>
-        <img src="{{ url_for('static', filename='img/notebook.png')}}" alt="pc" height="60px" width="80px">
-        <p class="card-text">30 dólares.</p>
-        <a href="{{ url_for('payment') }}" class="btn btn-primary">ir</a>
-      </div>
+    
       <div class="card text-center mb-3" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">MDR</h5>
@@ -52,14 +43,22 @@
         </div>
       </div>
     </div>
+
+    <div class="align-self-center"><h2>Servicios Presenciales</h2>
+      <!-- /END THE FEATURETTES -->
+     
+         </div>
     <div class="card text-center mb-3" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Precencial</h5>
-        <img src="{{ url_for('static', filename='img/notebook.png')}}" alt="pc" height="60px" width="80px">
+        <h5 class="card-title">Consulta</h5>
+        <img src="{{ url_for('static', filename='img/home.png')}}" alt="pc" height="80px" width="80px">
         <p class="card-text">45 min</p>
         <a href="{{ url_for('payment') }}" class="btn btn-primary">30 U$S</a>
       </div>
+      
     </div>
+
+    
     <h2>Horarios: </h2>
     <p><strong>Domingo: </strong>11:00-12:00 hrs</p>
     <p><strong>Lunes:    </strong>    9:00-20:00 hrs</p>
@@ -70,10 +69,6 @@
     <p><strong>Sábado: </strong>cerrado</p>
    
 
-    <h2>Lugares</h2>
-    <p>Clínica:</p>
-
-    
 
    </div>
 
