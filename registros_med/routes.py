@@ -1,14 +1,12 @@
 from registros_med import app
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import render_template, request, redirect, url_for, flash, session
 from datetime import date, datetime
 from registros_med.models import *
 from registros_med.forms import RegistrosForm
 import os
 from notifypy import Notify
 from flask_wtf.csrf import CSRFProtect
-from flask_login import LoginManager, login_user, logout_user, login_required
 import sqlite3
-
 
 
  
@@ -42,6 +40,7 @@ def validateForm(datosFormulario):
     if datosFormulario["usu_profession"]:
         errores.append("Profesión o actividad no puede ir vacia")
     return errores
+
 #Home e Index
 @app.route('/')
 def index():    
@@ -54,30 +53,10 @@ def layout():
     return render_template("login/contenido")
 
 
-# Ruta de registro
-@app.route('/test_upload', methods=['POST'])
-def test_upload():
-    if request.method == 'POST':
-        nombre = request.form['nombre']
-        foto = request.files['foto']
-        proyecto = app.root_path
-        now=datetime.now()
-        tiempo=now.strftime("%Y%m%d%H%M%S")
-        rename = tiempo + "-" + foto.filename
-
-        #si viene foto entonces guardar en carpeta del sistema
-        if foto: 
-            ruta_imagen = os.path.join(proyecto,"static/upload", rename)
-            foto.save(ruta_imagen)
- 
-
-
 # Ruta de inicio de sesión
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-   
-
-    
+       
     if request.method == 'POST':
         # obtener los datos del formulario
         username = request.form['username']
@@ -87,31 +66,60 @@ def login():
         selectUsuario = Conexion('SELECT * FROM usuarios WHERE usu_user = ? AND usu_pass = ? ', (username, password))
         usuario = selectUsuario.res.fetchone()
         selectUsuario.con.close()
-       
-  
-
+        
         if usuario is not None:              
-
-
-            session['userid'] = username['userid']
-            session['email'] = user 
-            # credenciales válidas, redireccionar
+            # credenciales válidas, guardar información en la sesión
+            session['userid'] = usuario[0]
+            session['email'] = usuario[3]
+            flash('¡Inicio de sesión exitoso!', 'success')
+            # redireccionar a la página deseada
             return redirect('/profesionals')
         else:
             # credenciales inválidas
             error = "Credenciales inválidas"
+            flash(error, 'error')
             return render_template('login.html', error=error)
 
     else:
-        return render_template('login.html')
+        error = "Credenciales inválidas"
+        flash(error, 'error')
+        return render_template('login.html')   
+    
+@app.route('/ejemplo/<int:id>', methods=["GET","POST"])
+def ejemplo(id):
+    if request.method == "GET":
+        resultado = select_by(id)
+
+        return render_template("ejemplo.html",data=resultado, title="Perfil")
+    else:
+        delete_by(id)
+        flash("Movimiento eliminado correctamente !!!")
+        return redirect("/profesionals")
+   
+    #conectUpdateBy = Conexion("SELECT  * FROM usuarios WHERE usu_id = 12" )
+    #conectUpdateBy.con.commit()
+    #conectUpdateBy.con.close()
+
+
+@app.route('/profesionals')
+def home():
+    registros = select_all()
+
+
+    return render_template("profesionals.html", data = registros, title="profesionales" )
+
+    
+@app.route('/logout')
+def logout():
+    session.pop('userid', None)
+    flash('Has cerrado sesión.', 'success')
+    return redirect('/')
 
 #base de datos
-
 @app.route('/registro')
 def registro():
     registros = select_all()
     return render_template("registro.html", data = registros)
-
 
 
 @app.route("/new",methods=["GET","POST"])
@@ -233,8 +241,6 @@ def update(id):
     else:
         return render_template("create.html",dataForm=form)
 
-
-
 #paginas profesionales
 
 #java
@@ -299,21 +305,6 @@ def user(id):
     return render_template("user.html",  data = resultado ) 
 
 
-@app.route('/ejemplo/<int:id>', methods=["GET","POST"])
-def ejemplo(id):
-    resultado = select_by(id)
-    #conectUpdateBy = Conexion("SELECT  * FROM usuarios WHERE usu_id = 12" )
-    #conectUpdateBy.con.commit()
-    #conectUpdateBy.con.close()
-
-    return render_template('ejemplo.html', data = resultado, title="Perfil" )
-
-@app.route('/profesionals')
-def home():
-    registros = select_all()
-
-
-    return render_template("profesionals.html", data = registros, title="profesionales" )
 
 
 @app.route("/about")

@@ -196,17 +196,14 @@
     <div class="mb-3">
     <label class="form-label" for="profession">Profesion o Actividad</label>
     <input type="text" id="profession" name="profession" class="form-control" placeholder="profesion">
-   <!-- {{dataForm.usu_profession.label(class="form-label")}}-->
-    <!-- {{dataForm.usu_profession(class="form-control")}}-->
     {% if dataForm.usu_profession.errors %}
         <ul class="errors">
-        {% for error in dataForm.profession.errors %}
+        {% for error in dataForm.usu_profession.errors %}
             <li class="form-text">{{ error }}</li>
         {% endfor %}
         </ul>
     {% endif %}
-    </div>
-
+</div>
 
     {{dataForm.submit}}
 </form>
