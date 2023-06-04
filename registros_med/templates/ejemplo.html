@@ -4,18 +4,72 @@
 
 <h1>Perfil</h1>
     
-          <hr class="featurette-divider">
+          
 
-          {% for item in data %}
+          
           <div class="col-lg-4">
-            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='upload/'+ item.usu_foto)}}" width="140" height="140"> 
+            <img class="bd-placeholder-img rounded-circle" src="{{ url_for('static', filename='upload/'+ data[12])}}" width="140" height="140"> 
       
-            <h2 class="fw-normal">{{item.usu_name}}</h2>
-            <p>{{item.usu_profession}}</p>
-            <p><a class="btn btn-secondary" href="{{perfil}}">{{item.usu_country}}</a></p>
+            <h2 class="fw-normal">{{data[1] }}</h2>
+            <p>{{data[13]}}</p>
+            <p><a class="btn btn-secondary" href="{{perfil}}">{{data[13]}}</a></p>
           </div><!-- /.col-lg-4 -->
-          {% endfor %}
-   <h1></h1>
+          <hr class="featurette-divider">
+   <h1>Datos:</h1>
+   <table class="table table-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Pais</th>
+        <th>ciudad</th>
+        <th>Cumpleaños</th>
+        <th>Sexo</th>    
+        <th>Fecha</th>
+        <th>Usuario</th>    
+        <th>Contraseña</th>             
+        <th>profesión</th>
+        <th>Acciones</th>
+        
+      </tr>      
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>{{data[1]}}</td>
+          <td>{{data[2]}}</td>
+          <td>{{data[3]}}</td>
+          <td>{{data[4]}}</td>
+          <td>{{data[5]}}</td>
+          <td>{{data[6]}}</td>
+          <td>{{data[7]}}</td>
+          <td>{{data[8]}}</td> 
+          <td>{{data[9]}}</td>  
+          <td>{{data[10]}}</td>
+          <td>{{data[11]}}</td>        
+          
+               
+          <td>{{data[13]}}</td>
+          <td>
+            <a href="/update/{{data[0]}}">
+              <span class="material-symbols-outlined">
+                  edit
+              </span>
+            </a>
+            <a href="/delete/{{data[0]}}">
+              <span class="material-symbols-outlined">
+                  delete
+              </span>
+            </a>
+
+          </td>
+        
+        </tr>
+    
+    </tbody>
+  </table>
    <div class="<div class="container-fluid">
     <div class="container">
       <div class ="row">
@@ -39,17 +93,17 @@
           </tr>      
         </thead>
         <tbody>
-          {% for item in data %}
+          
             <tr>
-              <td>{{item.usu_name}}</td>
-              <td>{{item.usu_lastname}}</td>             
-              <td>{{item.usu_country}}</td>           
+              <td>{{data[1]}}</td>
+              <td></td>             
+              <td></td>           
                     
            
-              <td>{{item.usu_profession}}</td>          
+              <td></td>          
              
             </tr>
-          {% endfor %}
+          
         </tbody>
       </table>
       {% endblock %}
@@ -84,33 +138,8 @@
   </div>
   <div class="col-md-7">
     <div class="card-body">
-      <table class="table table-sm">
-        <thead class="table-dark">
-          <tr>
-            <th>perfil</th>
-            <th>servicio</th>           
-            <th>valor</th>        
-           
-            <th>Caracteristica</th>       
-            
-          </tr>      
-        </thead>
-        <tbody>
-          {% for item in data %}
-            <tr>
-              <label class="form-label" for="name">Servicio</label>
-              <input type="text" id="name" name="name" class="form-control" placeholder="name">
-              <td>{{item.usu_name}}</td>
-              <td>{{item.usu_lastname}}</td>             
-              <td>{{item.usu_country}}</td>           
-                    
-           
-              <td>{{item.usu_profession}}</td>          
-             
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      
+      
     </div>
   </div>
 

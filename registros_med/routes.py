@@ -54,27 +54,6 @@ def layout():
     return render_template("login/contenido")
 
 
-
-
-@app.route('/contenido')
-def contenido():
-    return render_template('login/contenido.html')
-
-@app.route('/prem')
-def prem():
-       return render_template("/loginpremium/home.html")
-
-
-@app.route('/standar')
-def standar():
-    
-       return render_template("login/estandar/homeTwo.html")
-
-
-app.secret_key = 'mysecretkey'
-
-
-
 # Ruta de registro
 @app.route('/test_upload', methods=['POST'])
 def test_upload():
@@ -90,9 +69,7 @@ def test_upload():
         if foto: 
             ruta_imagen = os.path.join(proyecto,"static/upload", rename)
             foto.save(ruta_imagen)
-
-
-   
+ 
 
 
 # Ruta de inicio de sesión
@@ -310,62 +287,6 @@ def payment():
     return render_template('payment/form.html', title="checkout")
 
 # otros
-@app.route('/ejemplo', methods=["GET","POST"])
-def ejemplo():
-    
-    conectUpdateBy = Conexion("SELECT  * FROM usuarios WHERE usu_id = 12" )
-    conectUpdateBy.con.commit()
-    conectUpdateBy.con.close()
-
-    
-
-    
-    return render_template('ejemplo.html' )
-
-@app.route('/profesionals')
-def home():
-    registros = select_all()
-
-
-    return render_template("profesionals.html", data = registros, title="profesionals" )
-
-
-@app.route("/about")
-def about():
-    return render_template("about.html", title="about")
-
-@app.route('/pruebas',methods=["GET","POST"])
-def pruebas():
-    registros = select_all()
-    form = RegistrosForm()
-
-    if request.method == "GET":
-        return render_template("profesionals.html",dataForm=form)
-    else:
-       
-        if form.validate_on_submit():
-            insert([form.usu_name.data,
-                    form.usu_lastname.data,
-                    form.usu_email.data,
-                    form.usu_phone.data,
-                    form.usu_country.data,
-                    form.usu_city.data,
-                    form.usu_birthd.data.isoformat(),
-                    form.usu_sex.data,
-                    form.usu_date.data.isoformat(),
-                    form.usu_user.data,
-                    form.usu_pass.data,                    
-                    form.usu_concept.data,
-                    form.usu_quantity.data,
-                    form.usu_foto.data,
-                    form.usu_profession.data ])
-            
-            
-            flash("Movimiento registrado correactamente!!!")
-            return redirect('/pruebas')  
-        else:
-            return render_template("profesionals.html",dataForm=form, data = registros, title="profesionals")
-
       
 @app.route('/user/<int:id>',methods=["GET","POST"])
 def user(id):
@@ -375,5 +296,27 @@ def user(id):
     #selectUsuario.con.close()
 
 
-    return render_template("user.html",  datos = resultado ) 
+    return render_template("user.html",  data = resultado ) 
+
+
+@app.route('/ejemplo/<int:id>', methods=["GET","POST"])
+def ejemplo(id):
+    resultado = select_by(id)
+    #conectUpdateBy = Conexion("SELECT  * FROM usuarios WHERE usu_id = 12" )
+    #conectUpdateBy.con.commit()
+    #conectUpdateBy.con.close()
+
+    return render_template('ejemplo.html', data = resultado, title="Perfil" )
+
+@app.route('/profesionals')
+def home():
+    registros = select_all()
+
+
+    return render_template("profesionals.html", data = registros, title="profesionales" )
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html", title="about")
 
