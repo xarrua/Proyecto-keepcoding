@@ -100,7 +100,7 @@ def test_upload():
 def login():
    
 
-    conn = sqlite3.connect('data/registros.sqlite')
+    
     if request.method == 'POST':
         # obtener los datos del formulario
         username = request.form['username']
@@ -110,9 +110,14 @@ def login():
         selectUsuario = Conexion('SELECT * FROM usuarios WHERE usu_user = ? AND usu_pass = ? ', (username, password))
         usuario = selectUsuario.res.fetchone()
         selectUsuario.con.close()
+       
+  
+
+        if usuario is not None:              
 
 
-        if usuario is not None:
+            session['userid'] = username['userid']
+            session['email'] = user 
             # credenciales válidas, redireccionar
             return redirect('/profesionals')
         else:
@@ -141,7 +146,7 @@ def create():
         return render_template("create.html", dataForm=form)
     else:
        
-        #if request.validate_on_submit():
+        
             if request.method == 'POST':
                 name = request.form['name']
                 lastname = request.form['lastname']
@@ -155,19 +160,19 @@ def create():
                 user = request.form['user']
                 password = request.form['password']
                 profession = request.form['profession']   
-                foto = "holas"           
-               # foto = request.files['foto']
-               # proyecto = app.root_path
-               # now=datetime.now()
-               # tiempo=now.strftime("%Y%m%d%H%M%S")
-               # rename = tiempo + "-" + foto.filename
+                     
+                foto = request.files['foto']
+                proyecto = app.root_path
+                now=datetime.now()
+                tiempo=now.strftime("%Y%m%d%H%M%S")
+                rename = tiempo + "-" + foto.filename
                 
                 #si viene foto entonces guardar en carpeta del sistema
-              #  if foto: 
-               #     ruta_imagen = os.path.join(proyecto,"static/upload", rename)
-               #     foto.save(ruta_imagen)
+                if foto: 
+                    ruta_imagen = os.path.join(proyecto,"static/upload", rename)
+                    foto.save(ruta_imagen)
 
-            conectarInsert = Conexion("insert into usuarios(usu_name,usu_lastname,usu_email,usu_phone,usu_country,usu_city,usu_birthd,usu_sex,usu_date,usu_user,usu_pass,usu_foto,usu_profession) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",(name, lastname, email, phone, country, city, birthday, sex, date, user, password, foto, profession))
+            conectarInsert = Conexion("insert into usuarios(usu_name,usu_lastname,usu_email,usu_phone,usu_country,usu_city,usu_birthd,usu_sex,usu_date,usu_user,usu_pass,usu_foto,usu_profession) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",(name, lastname, email, phone, country, city, birthday, sex, date, user, password, rename, profession))
             conectarInsert.con.commit()#funcion para validar el registro
             conectarInsert.con.close()
 
@@ -181,14 +186,13 @@ def create():
                     form.usu_sex.data,
                     form.usu_date.data.isoformat(),
                     form.usu_user.data,
-                    form.usu_pass.data,                    
-                    form.usu_concept.data,
-                    form.usu_quantity.data,
+                    form.usu_pass.data,                 
+                    
                     form.usu_foto.data,
                     form.usu_profession.data ])"""
             
             flash("Movimiento registrado correactamente!!!")
-            return redirect('/registro')  
+            return redirect('/login')  
       #  else:
          #   return render_template("create.html",dataForm=form)
 
@@ -201,7 +205,7 @@ def remove(id):
     else:
         delete_by(id)
         flash("Movimiento eliminado correctamente !!!")
-        return redirect("/registro","/psico")
+        return redirect("/registro")
     
 @app.route("/update/<int:id>",methods=["GET","POST"])
 def update(id):
@@ -218,53 +222,40 @@ def update(id):
         form.usu_city.data = resultado[6]
         form.usu_birthd.data = datetime.strptime(resultado[7],"%Y-%m-%d")
         form.usu_sex.data = resultado[8]
+        form.usu_date.data = datetime.strptime(resultado[9],"%Y-%m-%d")   
         form.usu_user.data = resultado[10]
-        form.usu_pass.data = resultado[11]
-        form.usu_date.data = datetime.strptime(resultado[9],"%Y-%m-%d")     
+        form.usu_pass.data = resultado[11]        
         form.usu_foto.data = resultado[12]
         form.usu_profession.data = resultado[13]
 
-        return render_template("update.html",dataForm = form, idform = id)
-    else:
+        return render_template("update.html",dataForm = form, usu_id = id)
+        
+    elif request.method == "POST":
+        
        
-       if form.validate_on_submit():
-             #aqui ingresa el post
-            update_by(id,[form.usu_name.data,
-                    form.usu_lastname.data,
-                    form.usu_email.data,
-                    form.usu_phone.data,
-                    form.usu_country.data,
-                    form.usu_city.data,
-                    form.usu_birthd.data.isoformat(),
-                    form.usu_sex.data,
-                    form.usu_date.data.isoformat(),
-                    form.usu_user.data,
-                    form.usu_pass.data,          
-                
-                    form.usu_foto.data,
-                    form.usu_profession.data ])
-            flash("Movimiento actualizado correactamente!!!")
-            return redirect("/registro", "/psico")
-       else:
-            return render_template("create.html",dataForm=form)
+        #if form.validate_on_submit():
+          
 
+        #aqui ingresa el post
+        update_by(id,[form.usu_name.data,
+            form.usu_lastname.data,
+            form.usu_email.data,
+            form.usu_phone.data,
+            form.usu_country.data,
+            form.usu_city.data,
+            form.usu_birthd.data.isoformat(),
+            form.usu_sex.data,
+            form.usu_date.data.isoformat(),
+            form.usu_user.data,
+            form.usu_pass.data,                       
+            form.usu_profession.data ])
+        flash("Movimiento actualizado correactamente!!!")
+        return redirect("/registro")
+       
+    
+    else:
+        return render_template("create.html",dataForm=form)
 
-# Cuentas de profesionales 
-@app.route('/prof')
-def prof():
-    return render_template('profesionals/prof.html')
-
-@app.route('/create_prof')
-def create_prof():
-    return render_template('/profesionals/create_prof.html')
-
-@app.route('/delete_prof')
-def delete_prof():
-    return render_template('profesionals/delete_prof.html')
-
-@app.route('/update_prof')
-def update_prof():
-    return render_template('profesionals/update_prof.html')
 
 
 #paginas profesionales
@@ -319,15 +310,24 @@ def payment():
     return render_template('payment/form.html', title="checkout")
 
 # otros
-@app.route('/ejemplo')
+@app.route('/ejemplo', methods=["GET","POST"])
 def ejemplo():
-    return render_template('ejemplo.html')
+    
+    conectUpdateBy = Conexion("SELECT  * FROM usuarios WHERE usu_id = 12" )
+    conectUpdateBy.con.commit()
+    conectUpdateBy.con.close()
+
+    
+
+    
+    return render_template('ejemplo.html' )
 
 @app.route('/profesionals')
 def home():
     registros = select_all()
 
-    return render_template("profesionals.html", data = registros, title="profesionals")
+
+    return render_template("profesionals.html", data = registros, title="profesionals" )
 
 
 @app.route("/about")
@@ -367,5 +367,13 @@ def pruebas():
             return render_template("profesionals.html",dataForm=form, data = registros, title="profesionals")
 
       
+@app.route('/user/<int:id>',methods=["GET","POST"])
+def user(id):
+    resultado = select_by(id)
+    #selectUsuario = Conexion('SELECT * FROM usuarios WHERE usu_id = ?', (id))
+    #usuario = selectUsuario.res.fetchone()
+    #selectUsuario.con.close()
 
+
+    return render_template("user.html",  datos = resultado ) 
 

@@ -68,60 +68,54 @@
      </div>
     </div>"
  
-    <div class="<div class="container-fluid">
-      <div class="container">
-        <div class ="row">
-        
-        <div class="col-8">
-        {% block columna9 %}  
-  
-        
-        <hr class="featurette-divider">
-        <h1>Mi Formulario</h1>
-      
-        <table class="table table-sm">
-          <thead class="table-dark">
-            <tr>
-              <th>perfil</th>
-              <th>servicios</th>           
-              <th>valor</th>        
-             
-              <th>CV</th>       
-              
-            </tr>      
-          </thead>
-          <tbody>
-            {% for item in data %}
-              <tr>
-                <label class="form-label" for="name">Servicio</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="name">
-                <td>{{item.usu_name}}</td>
-                <td>{{item.usu_lastname}}</td>             
-                <td>{{item.usu_country}}</td>           
-                      
-             
-                <td>{{item.usu_profession}}</td>          
-               
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% endblock %}
-        </div>
-        <div class="col-4">
-          {% block columna10 %}
-          <hr class="featurette-divider">
-            <h1>Perfil Modelo</h1>
-            <p>Quedara un perfil parecido al siguiente pero con los datos y servicios de cada profesional:</p>
-            <a href="{{ url_for('pswe') }}">ejemplo</a>
-          {% endblock %}
-  
-  
-         </div>
-        </div>
-       </div>
-      </div>"
    
+<div class="row">
+  <div class="col-md-5">
+    <div class="card-body">
+      <form action="/add_contact" method="POST">
+        <input type="text" name="servicio" placeholder="servicio">
+        <input type="text" name="valor" placeholder="valor">
+        <input type="text" name="caracteristica" placeholder="caracteristica">    
+        <button type="submit">Agregar</button>
+
+      </form>
+
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="card-body">
+      <table class="table table-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>perfil</th>
+            <th>servicio</th>           
+            <th>valor</th>        
+           
+            <th>Caracteristica</th>       
+            
+          </tr>      
+        </thead>
+        <tbody>
+          {% for item in data %}
+            <tr>
+              <label class="form-label" for="name">Servicio</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="name">
+              <td>{{item.usu_name}}</td>
+              <td>{{item.usu_lastname}}</td>             
+              <td>{{item.usu_country}}</td>           
+                    
+           
+              <td>{{item.usu_profession}}</td>          
+             
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
 
 
 {% endblock %}

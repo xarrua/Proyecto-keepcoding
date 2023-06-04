@@ -14,8 +14,7 @@ class RegistrosForm(FlaskForm):
     usu_sex= StringField('sexo',validators=[DataRequired( message="El sexo es requerido" )])
     usu_date = DateField('Fecha',validators=[DataRequired( message="La fecha es requerida" )])
     usu_user = StringField('Usuario',validators=[DataRequired( message="El usuario es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
-    usu_pass = StringField('Contraseña',validators=[DataRequired( message="La contraseña es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])
-    
+    usu_pass = StringField('Contraseña',validators=[DataRequired( message="La contraseña es requerido" ),Length(min=4,message="Mas de 3 carácteres por favor")])    
     usu_foto = StringField('foto', validators=[DataRequired( message="Imagen no valida, revise formato (jpg o png) y que no sea muy grande")])
     usu_profession = StringField('Profesión', validators=[DataRequired(message="Profesion o actividad es requerida")])
     
@@ -27,12 +26,5 @@ class RegistrosForm(FlaskForm):
         if field.data > date.today():
             raise ValidationError("Fecha invalida: La fecha introducida es a futuro")
 
-    def ComprobacionPassword():
-        usu_pass = StringField
-        repetPass = StringField
-        if usu_pass == repetPass:
-            return usu_pass
-        else:
-            return "Las contraseñas no coinciden, vuelva a introducirlas"
-        
+
    

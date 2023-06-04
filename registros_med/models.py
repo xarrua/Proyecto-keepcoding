@@ -42,7 +42,7 @@ def delete_by(id):
     conectDeleteBy.con.close()
 
 def update_by(id,registro):
-    conectUpdateBy = Conexion(f"UPDATE usuarios SET usu_name=?,usu_lastname=?,usu_email=?,usu_phone=?,usu_country=?,usu_city=?,usu_birthd=?,usu_sex=?,usu_user=?,usu_pass=?,usu_date=?, WHERE usu_id={id};",registro)
+    conectUpdateBy = Conexion(f"UPDATE usuarios SET usu_name=?,usu_lastname=?,usu_email=?,usu_phone=?,usu_country=?,usu_city=?,usu_birthd=?,usu_sex=?,usu_date=?,usu_user=?,usu_pass=?,usu_profession=? WHERE usu_id={id};",registro)
     conectUpdateBy.con.commit()
     conectUpdateBy.con.close()
 """
