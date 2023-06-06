@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block section %}
+
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">{{nombre}}+{{apellido}} <span class="text-muted">{{profesion}} </span></h2>
+        <p class="lead">{{about}}</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"  src="{{ url_for('static', filename='upload/'+ data[12])}}" width="400" height="400">
+  
+      </div>
+    </div>
+
+    <div class="redes">
+      <a href="{{link}}"><img src="../static/img/in.png" height="20" width="30"></a>
+      <a href="{{fb}}"><img src="../static/img/fb.png" height="20" width="30"></a>
+      <a href="{{ig}}"><img src="../static/img/ig.jpg" height="20" width="30"></a>
+      <a href="{{mail}}"><img src="../static/img/mail1.png" height="20" width="30"></a>
+      <a href="{{w}}"><img src="../static/img/whatsapp.png" height="20" width="30"></a>
+      <br>
+      <br>
+    
+      <a href="https://app.psyson.org/swelyn-valverde-bello"><span class="material-symbols-outlined" height="60" width="60">calendar_month</span></a>
+    </div>
+ 
+    <hr class="featurette-divider">
+
+    </div>
+   
+
+
+
+
+{% endblock %}

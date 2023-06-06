@@ -149,7 +149,8 @@
           <p>Se agregaran servicios e información para atención a pacientes junto con edicion del perfil profesional.</p>
           <form action="/ejemplo/{{20}}" method="POST">
             <button type="submit" style="background-color: #2ed81b;">Aquí</button>
-          <a href="{{ url_for('logout') }}">cerrar sesion</button><a>
+          <a href="{{ url_for('layout') }}" type="button" class="btn-primary">cerrar sesion</button><a>
+            <a href="{{ url_for('ejemplo', id=usuario_id) }}">Ir a Perfil</a>
              </form>
           </form>
          
