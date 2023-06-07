@@ -77,16 +77,17 @@
 
       
       <hr class="featurette-divider">
-      <h1>Mi informacion</h1>
+      <h1>Mis Servicios</h1>
     
       <table class="table table-sm">
         <thead class="table-dark">
           <tr>
-            <th>perfil</th>
+            <th>Profesional</th>
             <th>servicios</th>           
-            <th>valor</th>        
+            <th>valor</th>     
+            <th>otros</th>    
            
-            <th>CV</th>       
+            
             
           </tr>      
         </thead>
@@ -96,6 +97,8 @@
               <td>{{data[1]}}</td>
               <td></td>             
               <td></td>           
+              <td></td>
+            
                     
            
               <td></td>          
@@ -119,16 +122,28 @@
        </div>
       </div>
      </div>
-    </div>"
+    </div>
  
    
 <div class="row">
   <div class="col-md-5">
     <div class="card-body">
       <form action="/add_contact" method="POST">
-        <input type="text" name="servicio" placeholder="servicio">
-        <input type="text" name="valor" placeholder="valor">
-        <input type="text" name="caracteristica" placeholder="caracteristica">    
+        <input type="text" name="servicio" placeholder="servicio1">
+        <input type="text" name="servicio" placeholder="servicio2">
+        <input type="text" name="servicio" placeholder="servicio3">
+        <input type="text" name="servicio" placeholder="servicio4">
+        <input type="text" name="servicio" placeholder="servicio5">
+        <input type="text" name="valor" placeholder="valor1">
+        <input type="text" name="valor" placeholder="valor2">
+        <input type="text" name="valor" placeholder="valor3">
+        <input type="text" name="valor" placeholder="valor4">
+        <input type="text" name="valor" placeholder="valor5">
+        <input type="text" name="caracteristica" placeholder="caracteristica1"> 
+        <input type="text" name="caracteristica" placeholder="caracteristica2"> 
+        <input type="text" name="caracteristica" placeholder="caracteristica3"> 
+        <input type="text" name="caracteristica" placeholder="caracteristica4"> 
+        <input type="text" name="caracteristica" placeholder="caracteristica5">    
         <button type="submit">Agregar</button>
 
       </form>
@@ -143,5 +158,166 @@
   </div>
 
 </div>
+<h1>Perfil:</h1>
+   <table class="table table-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre completo</th>
+        <th>Profesin</th>
+        <th>about</th>
+        <th>Acciones</th>     
+            
+         
+      </tr>      
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>{{data[1] + data[2]}}</td>
+          <td>{{data[13]}}</td>
+          <td>{{about}}</td>
+      
+              
+     
+          <td>
+            <a href="/update/{{data[0]}}">
+              <span class="material-symbols-outlined">
+                  edit
+              </span>
+            </a>
+            <a href="/delete/{{data[0]}}">
+              <span class="material-symbols-outlined">
+                  delete
+              </span>
+            </a>
+
+          </td>
+        
+        </tr>
+    
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card-body">
+        <form action="/add_contact" method="POST">
+          <input type="text" name="fullname" placeholder="fullname">
+          <input type="text" name="profession" placeholder="profession">
+          <input type="text" name="about" placeholder="about">    
+          <button type="submit">Agregar</button>
+  
+        </form>
+  
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="card-body">
+        
+        
+      </div>
+    </div>
+  
+  </div>
+
+  <h1>CV:</h1>
+   <table class="table table-sm">
+    <thead class="table-dark">
+      <tr>
+    
+        <th>Nombre Completo</th>
+        <th>Sobre mi</th>
+        <th>Información Personal</th>
+        <th>Experiancia Laboral</th>
+        <th>Educación</th>      
+        <th>Cursos</th>
+        <th>Soft Skills</th> 
+        <th>Idiomas</th>
+        <th>Otras Actividades</th>    
+        <th>Referencias</th>        
+        <th>Acciones</th>
+        <th>Acciones</th>
+        <th>Acciones</th>
+        <th>Acciones</th>
+        <th>Acciones</th>
+         
+      </tr>      
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>{{data[1]}}</td>
+          <td>{{data[2]}}</td>
+          <td>{{data[3]}}</td>
+          <td>{{data[4]}}</td>
+          <td>{{data[5]}}</td>
+          <td>{{data[6]}}</td>
+          <td>{{data[7]}}</td>
+          <td>{{data[8]}}</td> 
+          <td>{{data[9]}}</td>  
+          <td>{{data[10]}}</td>
+          <td>{{data[11]}}</td>   
+          <td>{{data[10]}}</td>
+          <td>{{data[11]}}</td>
+           
+          
+               
+          <td>{{data[13]}}</td>
+          <td>
+            <a href="/update/{{data[0]}}">
+              <span class="material-symbols-outlined">
+                  edit
+              </span>
+            </a>
+            <a href="/delete/{{data[0]}}">
+              <span class="material-symbols-outlined">
+                  delete
+              </span>
+            </a>
+
+          </td>
+        
+        </tr>
+    
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card-body">
+        <form action="/add_contact" method="POST">
+          <input type="text" name="servicio" placeholder="servicio">
+          <input type="text" name="valor" placeholder="valor">
+          <input type="text" name="caracteristica" placeholder="caracteristica">  
+          <input type="text" name="servicio" placeholder="servicio">
+          <input type="text" name="valor" placeholder="valor">
+          <input type="text" name="caracteristica" placeholder="caracteristica"> 
+          <input type="text" name="servicio" placeholder="servicio">
+          <input type="text" name="valor" placeholder="valor">
+          <input type="text" name="caracteristica" placeholder="caracteristica"> 
+          <input type="text" name="servicio" placeholder="servicio">
+          <input type="text" name="valor" placeholder="valor">
+          <input type="text" name="Idioma" placeholder="Idioma"> 
+          <input type="text" name="Idioma" placeholder="Idioma"> 
+          <input type="text" name="Idioma" placeholder="Idioma"> 
+          <input type="text" name="Idioma" placeholder="Idioma"> 
+          <input type="text" name="servicio" placeholder="servicio">
+          <input type="text" name="Referencias" placeholder="Referencias">
+          <input type="text" name="Referencias" placeholder="Referencias">
+          <input type="text" name="Referencias" placeholder="Referencias">
+          <input type="text" name="caracteristica" placeholder="caracteristica">   
+          <button type="submit">Agregar</button>
+  
+        </form>
+  
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="card-body">
+        
+        
+      </div>
+    </div>
+  
+  </div>
+
 
 {% endblock %}

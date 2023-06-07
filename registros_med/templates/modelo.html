@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layout.html" %}
 
 {% block section %}
 
@@ -11,7 +11,7 @@
 
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">{{nombre}}+{{apellido}} <span class="text-muted">{{profesion}} </span></h2>
+        <h2 class="featurette-heading fw-normal lh-1">{{nombre}}{{apellido}} <span class="text-muted">{{profesion}} </span></h2>
         <p class="lead">{{about}}</p>
       </div>
       <div class="col-md-5 order-md-1">

@@ -8,9 +8,6 @@ from notifypy import Notify
 from flask_wtf.csrf import CSRFProtect
 from flask_login import LoginManager, login_user, logout_user, login_required
 import sqlite3
-
-
-
  
 def validateForm(datosFormulario):
     errores=[]#crear lista para guardar errores
@@ -47,13 +44,21 @@ def validateForm(datosFormulario):
 def index():    
     return render_template("index.html")
 
-#login
+
 @app.route('/layout', methods = ['GET', 'POST'])
 def layout():
-    session.clear()
-    return render_template("index.html")
+    if 'userid' in session:
 
+        usuario_id = session['userid']
+        
+        resultado = select_by(usuario_id)
 
+        session.clear()
+        return render_template('layout.html', data = resultado )
+    flash('Debe iniciar sesión para acceder a esta página.', 'error')
+    return redirect(url_for('login'))
+
+   
 # Ruta de registro
 @app.route('/test_upload', methods=['POST'])
 def test_upload():
@@ -69,7 +74,7 @@ def test_upload():
         if foto: 
             ruta_imagen = os.path.join(proyecto,"static/upload", rename)
             foto.save(ruta_imagen)
- 
+ #login
 # Ruta de inicio de sesión
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -99,49 +104,6 @@ def login():
 
     else:
         return render_template('login.html')
-
-@app.route('/ejemplo/<int:id>', methods=["GET","POST"])
-def ejemplo(id):
-    if 'userid' in session:
-
-        usuario_id = session['userid']
-        
-        resultado = select_by(usuario_id)
-    #conectUpdateBy = Conexion("SELECT  * FROM usuarios WHERE usu_id = 12" )
-    #conectUpdateBy.con.commit()
-    #conectUpdateBy.con.close()
-
-        return render_template('ejemplo.html', data = resultado, title="Perfil" )
-    flash('Debe iniciar sesión para acceder a esta página.', 'error')
-    return redirect(url_for('login'))
-
-@app.route('/modelo')
-def modelo():
-    if 'userid' in session:
-
-        usuario_id = session['userid']
-        
-        resultado = select_by(usuario_id)
- 
-        return render_template('modelo.html', data = resultado )
-    flash('Debe iniciar sesión para acceder a esta página.', 'error')
-    return redirect(url_for('login'))
-    
-    return render_template("modelo.html", data= resultado)
-
-@app.route('/profesionals')
-def home():
-    if 'userid' in session:
-        usuario_id = session['userid']
-
-
-        registros = select_all()
-        return render_template("profesionals.html", data = registros, usuario_id=usuario_id, title="profesionales" )
-
-    
-    flash('Debe iniciar sesión para acceder a esta página.', 'error')
-    return redirect(url_for('login'))
-
       
 #base de datos
 
@@ -149,8 +111,6 @@ def home():
 def registro():
     registros = select_all()
     return render_template("registro.html", data = registros)
-
-
 
 @app.route("/new",methods=["GET","POST"])
 def create():
@@ -160,8 +120,7 @@ def create():
     if request.method == "GET":
         return render_template("create.html", dataForm=form)
     else:
-       
-        
+               
             if request.method == 'POST':
                 name = request.form['name']
                 lastname = request.form['lastname']
@@ -322,9 +281,7 @@ def payment():
 @app.route('/user/<int:id>',methods=["GET","POST"])
 def user(id):
     resultado = select_by(id)
-    #selectUsuario = Conexion('SELECT * FROM usuarios WHERE usu_id = ?', (id))
-    #usuario = selectUsuario.res.fetchone()
-    #selectUsuario.con.close()
+ 
 
     return render_template("user.html",  data = resultado ) 
 
@@ -333,3 +290,175 @@ def about():
     return render_template("about.html", title="about")
 
 
+
+@app.route('/ejemplo/<int:id>', methods=["GET","POST"])
+def ejemplo(id):
+    if 'userid' in session:
+
+        usuario_id = session['userid']
+        
+        resultado = select_by(usuario_id)
+        
+
+
+        return render_template('ejemplo.html', data = resultado, title="Perfil" )
+    flash('Debe iniciar sesión para acceder a esta página.', 'error')
+    return redirect(url_for('login'))
+
+@app.route('/modelo')
+def modelo():
+    if 'userid' in session:
+
+        usuario_id = session['userid']
+        
+        resultado = select_by(usuario_id)
+ 
+        return render_template('modelo.html', data = resultado )
+    flash('Debe iniciar sesión para acceder a esta página.', 'error')
+    return redirect(url_for('login'))
+    
+
+@app.route('/profesionals')
+def home():
+    if 'userid' in session:
+        usuario_id = session['userid']
+
+
+        registros = select_all()
+        return render_template("profesionals.html", data = registros, usuario_id=usuario_id, title="profesionales" )
+
+    
+    flash('Debe iniciar sesión para acceder a esta página.', 'error')
+    return redirect(url_for('login'))
+
+
+@app.route('/servicios')
+def servicios():
+    if 'userid' in session:
+
+        usuario_id = session['userid']
+        
+        resultado = select_by(usuario_id)
+
+        return render_template('servicios.html', data = resultado )
+    flash('Debe iniciar sesión para acceder a esta página.', 'error')
+    return redirect(url_for('login'))
+
+@app.route('/cv')
+def cv():
+    if 'userid' in session:
+
+        usuario_id = session['userid']
+        
+        resultado = select_by(usuario_id)
+
+        return render_template('cv.html', data = resultado )
+    flash('Debe iniciar sesión para acceder a esta página.', 'error')
+    return redirect(url_for('login'))
+
+
+
+
+
+
+@app.route('/registro2')
+def registro2():
+    registros = select_all()
+    return render_template("registro2.html", data = registros)
+
+@app.route("/new2",methods=["GET","POST"])
+def create2():
+
+    form = RegistrosForm()
+
+    if request.method == "GET":
+        return render_template("create2.html", dataForm=form)
+    else:
+               
+            if request.method == 'POST':
+                name = request.form['name']
+                lastname = request.form['lastname']
+                email = request.form['email']
+                phone = request.form['phone']
+                country = request.form['country']
+                city = request.form['city']
+                birthday = request.form['birthday']
+                sex = request.form['sex']
+                date = request.form['date']
+                user = request.form['user']
+                password = request.form['password']
+                profession = request.form['profession']   
+                     
+                foto = request.files['foto']
+                proyecto = app.root_path
+                now=datetime.now()
+                tiempo=now.strftime("%Y%m%d%H%M%S")
+                rename = tiempo + "-" + foto.filename
+                
+                #si viene foto entonces guardar en carpeta del sistema
+                if foto: 
+                    ruta_imagen = os.path.join(proyecto,"static/upload", rename)
+                    foto.save(ruta_imagen)
+
+            conectarInsert = Conexion("insert into usuarios(usu_name,usu_lastname,usu_email,usu_phone,usu_country,usu_city,usu_birthd,usu_sex,usu_date,usu_user,usu_pass,usu_foto,usu_profession) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",(name, lastname, email, phone, country, city, birthday, sex, date, user, password, rename, profession))
+            conectarInsert.con.commit()#funcion para validar el registro
+            conectarInsert.con.close()
+
+            
+            flash("Movimiento registrado correactamente!!!")
+            return redirect('/login')  
+      #  else:
+         #   return render_template("create.html",dataForm=form)
+
+@app.route("/delete2/<int:id>",methods=["GET","POST"])
+def remove2(id):
+    if request.method == "GET":
+        resultado = select_by(id)
+
+        return render_template("delete2.html",data=resultado)
+    else:
+        delete_by(id)
+        flash("Movimiento eliminado correctamente !!!")
+        return redirect("/registro")
+    
+@app.route("/update2/<int:id>",methods=["GET","POST"])
+def update2(id):
+    form = RegistrosForm()
+
+    if request.method == "GET":
+        resultado = select_by(id)
+        
+        form.usu_name.data = resultado[1]
+        form.usu_lastname.data = resultado[2]
+        form.usu_email.data = resultado[3]
+        form.usu_phone.data = resultado[4]
+        form.usu_country.data = resultado[5]
+        form.usu_city.data = resultado[6]
+        form.usu_birthd.data = datetime.strptime(resultado[7],"%Y-%m-%d")
+        form.usu_sex.data = resultado[8]
+        form.usu_date.data = datetime.strptime(resultado[9],"%Y-%m-%d")   
+        form.usu_user.data = resultado[10]
+        form.usu_pass.data = resultado[11]        
+        form.usu_foto.data = resultado[12]
+        form.usu_profession.data = resultado[13]
+
+        return render_template("update2.html",dataForm = form, usu_id = id)
+        
+    elif request.method == "POST":
+               
+        #if form.validate_on_submit():
+          
+        #aqui ingresa el post
+        update_by(id,[form.usu_name.data,
+            form.usu_lastname.data,
+            
+            form.usu_birthd.data.isoformat(),
+          
+            form.usu_date.data.isoformat(),
+                               
+            form.usu_profession.data ])
+        flash("Movimiento actualizado correactamente!!!")
+        return redirect("/registro")
+           
+    else:
+        return render_template("create.html",dataForm=form)

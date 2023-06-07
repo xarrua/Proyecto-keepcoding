@@ -16,10 +16,10 @@
       <header class="blog-header lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <a class="link-secondary" href="{{ url_for('about') }}">About</a>
+            <a class="link-secondary" href="{{ url_for('registro') }}">Registro</a>
           </div>
           <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="{{ url_for('profesionals') }}">Home</a>
+            <a class="blog-header-logo text-dark" href="{{ url_for('home') }}">Home</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="link-secondary" href="#" aria-label="بحث">
@@ -31,13 +31,13 @@
       </header>
       <ul class="nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link active" href="{{perfil}}">Perfil</a>
+          <a class="nav-link active" href="{{ url_for('modelo') }}">Perfil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{Servicios}}">Servicios</a>
+          <a class="nav-link" href="{{ url_for('servicios') }}">Servicios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{CV }}">Curriculum Vitae</a>
+          <a class="nav-link" href="{{ url_for('cv') }}">Curriculum Vitae</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="">{{name}}</a>
@@ -72,9 +72,6 @@
 <!-- Marketing messaging and featurettes
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
-
-
- 
  
   {% block section %}
   

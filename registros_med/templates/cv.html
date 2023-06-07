@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block section %}
+
+
+<div class="container">
+
+  <header>
+    <div class="d-flex">
+      <div class="p-2 flex-fill"><img src="{{ url_for('static', filename='upload/'+ data[12])}}" height="300px" width="300px" ></div>
+      <div class="p-2 flex-fill">
+        <br>
+        <br>
+        <br>
+        <h1><strong>{{data[1]}}</strong> </h1></div>
+      <div class="p-2 flex-fill"></div>
+    </div>
+    
+    </header>
+    <main>
+    
+    
+    <div class="d-flex justify-content-center"><h2><strong>{{data[13]}}</strong>{{especialidad}}</h2></div>
+      
+
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-4">
+        <div id="list-example" class="list-group">
+          <a class="list-group-item list-group-item-action" href="#list-item-1">Presentación</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-2">Información Personal</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-3">Experiancia Laboral</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-4">Educación</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-5">Cursos</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-6">Soft Skills</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-7">Idiomas</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-8">Otras Actividades</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-9">Referencias</a>
+        </div>
+      </div>
+      <div class="col-8">
+        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+          <h4 id="list-item-1">Presentación</h4>
+          <p>{{presentacion}} </p>
+          <h4 id="list-item-2">Información Personal</h4>
+          <p>Nombre completo: Swelyn Nicole Loreann Valverde Bello</p>
+          <p>Fecha de nacimiento: 6 de Marzo de 1990
+          <p>Estado civil: Casada</p>
+          <p>Nacionalidad: Chilena</p>
+          <h4 id="list-item-3">Experiencia Laboral</h4>
+          <p>
+            <p>2012- Actual:  Particular</p>
+            <p>2022- Actual:  Centro Integral de Salud, Sorvicenta. LA, Chile</p>
+            <p>2022-Actual:   Hope Medical Center</p>
+            <p>2018-2022:     Clínica Adventista de Los Angeles, Chile</p>
+            <p>2013-2022       Centro Educacional Adventista de Los Angeles (CEALA), Psicóloga y docente.</p>
+            <p>2010 - Operativos Médicos Sociales</p>
+          </p>
+          <h4 id="list-item-4">Educación</h4>
+          <p>2020   <strong>Diplomado en Mediación Familiar</strong>, Universidad Adventista de Chile</p>  
+          <p>2013-2015      <strong>Especialización Clínica Infanto Juvenil</strong>, Universidad Diego Portales, Chile</p>  
+          <p>2007-2012 <strong> Psicóloga</strong>, Universidad de La Frontera (UFRO), Chile</p>   
+           
+           
+          <h4 id="list-item-5">Cursos</h4>
+          <p>
+            <li><strong>Eye Movement Desensitization and Reprocessing, Basic Training.</strong> 80 horas,  EMRD INSTITUTE, INC. Online USA. </li>
+            <li><strong>Certificación Profesional como Terapeuta Cristiano Psyson.</strong> 50 horas, Psyson. Online, USA.</li>
+            <li><strong>Técnicas de Mediación Familiar.</strong> 62 horas, Organismo técnico de capacitación de la Universidad Adventista de Chile.</li>
+            <li><strong>Aplicación de la Estructura Jurídica para la Mediación Familiar</strong>, Organismo técnico de capacitación de la Universidad Adventista de Chile
+              Código SENCE 12.37.9805-87, Sencenet 5936041</li>
+            <li><strong>Desarrollo de habilidades Psicomocionales para la mediación.</strong> 62 horas, Organismo técnico de capacitación de la Universidad Adventista de Chile
+              Código SENCE 12.37.9829-87, Sencenet 5921499</li>
+            <li><strong>Herramientas de gestión de
+              conflictos del relacionamiento interpersonal Chillán.</strong> 62 horas, Organismo técnico de capacitación de la Universidad Adventista de Chile
+              Código SENCE 12.37.9828-91, Sencenet 5915213
+              Código SENCE 12.37.9828-91, Sencenet 5915213. Chillán, Chile </li>
+            <li><strong>Taller WISC-V nivel intermedio Santiago.</strong>8 horas, Pontificia Universidad Católica de Chile </li>
+            <li><strong>Intensive English Program</strong>147 horas, Level 2 Dayton University, Ohio, USA</li>
+            <li><strong>Competencias Parentales: Bases conceptuales para la evaluación Valdivia.</strong>8 horas, Mentores Group y Fundación América por la Infancia, Chile </li>
+            <li><strong>Evaluación de Competencias Parentales: la escala y la entrevista E2P Valdivia</strong>8 horas, Mentores Group y Fundación América por la Infancia, Chile  </li>
+            <li><strong>Evaluación Familiar Eco-sistémica: entrenamiento en la escala NCFAS-G+R Valdivia</strong>8 horas, Mentores Group y Fundación América por la Infancia, Chile</li>
+            <li><strong> Decreto 83-2015, Criterios y orientaciones de Adecuación curricular para estudiantes con NEE Los Ángeles,</strong> 20 horas, Centro de Tecnología y Docencia Universidad de Concepción </li>
+            <li><strong>Salud y Evangelismo Los Ángeles.</strong>45 horas, Instituto Laico para entrenamiento Global de Salud (LIGHT) </li>
+            <li><strong>Administración, corrección e interpretación inicial del WAIS-IV.</strong> 16 horas,Pontificia Universidad Católica de Chile </li>
+          
+
+          </p>
+          <h4 id="list-item-6">Soft Skills</h4>
+          <p>
+          <p>- Trabajo en equipo</p>
+          <p>- Resolucion de problemas</p>
+          <p>- Empatía</p>
+          </p>
+          <h4 id="list-item-7">Idiomas</h4>
+          <p>
+            <p>- {{idioma}}</p>
+            <p>- {{idioma}}</p>
+          </p>
+          <h4 id="list-item-8">Referencias</h4>
+         
+            <p><strong> María Elena Bustos</strong>: Directora, Centro Educacional Adventista Los Ángeles (CEALA) - maebma@yahoo.es </p> 
+            <p><strong> Luisa Méndez</strong>: Coordinadora Programa Integración Escolar CEALA - luluisa90@gmail.com</p>              
+            <p><strong> Dr. Aldo Curiqueo</strong>: Director Médico,  Clínica Adventistade Chile</p>
+
+          <h4 id="list-item-9">Otras Actividades</h4>
+          <p>{{hobby}}</p>
+          
+        </div>
+      </div>
+    </div>
+    <br>
+
+   
+    </main>
+    
+    
+
+</div>
+
+
+{% endblock %}
